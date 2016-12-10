@@ -3191,7 +3191,8 @@ div.jqcloud {
     height: 150px; }
 
 body {
-  background: #fafafa; }
+  background: #fafafa;
+  margin: 0; }
 
 .centered {
   display: flex;
