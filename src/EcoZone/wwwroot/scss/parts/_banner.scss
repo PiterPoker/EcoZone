@@ -1,0 +1,33 @@
+.banner {
+  background: url("../img/banner.jpg") no-repeat fixed center;
+  background-size: cover;
+  @include flex(column);
+  height: 100vh;
+  overflow: hidden;
+  width: 100%;
+  justify-content: center;
+
+  .banner-title {
+    @include font(72px);
+  }
+
+  .banner-title,
+  .description {
+    color: #fff;
+    margin: 0;
+    text-align: center;
+    z-index: 1;
+  }
+
+  .line {
+    background: #fff;
+    height: 2px;
+    margin: 0 auto;
+    max-width: 40%;
+    width: 40%;
+  }
+
+  &.article-banner {
+    height: 50vh;
+  }
+}

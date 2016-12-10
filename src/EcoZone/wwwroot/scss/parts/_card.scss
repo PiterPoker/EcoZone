@@ -1,0 +1,184 @@
+.card {
+  background: #fff;
+  border: solid 1px #ccc;
+  margin: 5px;
+  position: relative;
+  width: 200px;
+
+  .card-header {
+    overflow: hidden;
+
+    .card-image {
+      height: 200px;
+      overflow: hidden;
+      position: relative;
+      width: 100%;
+      background: {
+        position: center;
+        repeat: no-repeat;
+        size: cover;
+      }
+      @include animation(.3s);
+    }
+  }
+
+  .card-body {
+    padding: 10px;
+
+    .title, .meta-info, .description {
+      @include disableSelect();
+    }
+
+    .title, .meta-info {
+      margin: 0 0 5px 0;
+    }
+
+    .description {
+      margin: 0;
+    }
+
+    .title, .meta-info {
+      @include cutText();
+    }
+
+    .description {
+      @include cutTextBlock(3);
+    }
+
+    .meta-info {
+      font-style: italic;
+
+      .author {
+        font: {
+          weight: bold;
+        }
+      }
+    }
+
+    .description, .meta-info {
+      font: {
+        size: 14px;
+      }
+    }
+  }
+
+  .card-action {
+    padding: 10px;
+    text-align: center;
+
+    a {
+      position: relative;
+      text-decoration: none;
+      @include font(16px);
+      @include hoverBottomAnimation(2px, $text-color);
+
+      &:hover:after {
+        left: 0;
+        width: 100%;
+      }
+    }
+  }
+}
+
+.news-cards, .exhibit-cards {
+  @include flex(row);
+  margin: -5px;
+  flex-wrap: wrap;
+
+  .card {
+    @include flex(column);
+    opacity: 0;
+    transform: translateX(20px);
+    width: calc(100% - 10px);
+
+    &.is-showing {
+      animation: showCardAnimation .3s ease-in-out forwards;
+    }
+
+    .card-header {
+      position: relative;
+
+      .statistic {
+        background: rgba(0, 0, 0, .5);
+        bottom: 0;
+        display: flex;
+        flex-direction: row;
+        left: 0;
+        opacity: 0;
+        padding: 50px;
+        position: absolute;
+        @include animation(0.3s);
+        right: 0;
+        top: 0;
+        justify-content: center;
+
+        .views, .likes {
+          text-align: center;
+          flex: 1;
+        }
+
+        i {
+          color: #fff;
+          font-size: 40px;
+        }
+
+        .line {
+          background: #fff;
+          height: 2px;
+          margin: 5px auto;
+          width: 50px;
+        }
+
+        .count {
+          color: #fff;
+          font-size: 20px;
+          @include disableSelect();
+        }
+      }
+    }
+
+    .card-body {
+      flex-grow: 1;
+    }
+
+    .card-action {
+      margin-top: auto;
+    }
+
+    &:hover {
+      .card-header {
+        .card-image {
+          transform: scale(1.02);
+        }
+
+        .statistic {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 48em) {
+  .news-cards, .exhibit-cards {
+    .card {
+      width: calc(50% - 12px);
+    }
+  }
+}
+
+@media only screen and (min-width: 62em) {
+  .news-cards, .exhibit-cards {
+    .card {
+      width: calc(33.33% - 12px);
+    }
+  }
+}
+
+@media only screen and (min-width: 75em) {
+  .news-cards, .exhibit-cards {
+    .card {
+      width: calc(25% - 12px);
+    }
+  }
+}

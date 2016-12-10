@@ -1,0 +1,30 @@
+.select-field {
+  margin-bottom: 20px;
+  position: relative;
+
+  select {
+    background: transparent;
+    border: 0;
+    border-bottom: 2px solid #ccc;
+    box-sizing: border-box;
+    margin: 0;
+    outline: 0;
+    overflow: hidden;
+    padding: 10px;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+    -webkit-appearance: button;
+    -webkit-user-select: none;
+
+    &:focus + label:after {
+      left: 0;
+      width: 100%;
+    }
+  }
+
+  label {
+    @include hoverBottomAnimation(2px, $text-color);
+  }
+}

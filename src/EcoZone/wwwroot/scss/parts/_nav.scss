@@ -1,0 +1,168 @@
+nav {
+  @include fixed(0, 0, auto, 0);
+  background: #fff;
+  height: 70px;
+  @include animation(0.3s);
+  z-index: 2;
+
+  &.is-scrolling {
+    height: 50px;
+
+    .toggle-navigation {
+      height: 50px;
+
+      i {
+        line-height: 50px;
+      }
+    }
+
+    ul {
+      li {
+        height: 50px;
+
+        a {
+          line-height: 50px !important;
+        }
+      }
+    }
+  }
+
+  .toggle-navigation {
+    display: block;
+    height: 70px;
+    @include animation(.3s);
+
+    i {
+      cursor: pointer;
+      font-size: 30px;
+      line-height: 70px;
+      @include animation(.3s);
+    }
+  }
+
+  .mobile-navigation {
+    background: #fff;
+    display: block;
+    padding: 2rem;
+    @include fixed(0, 0, auto, 0);
+    @include animation(.3s);
+    transform: translateY(-100%);
+
+    &.is-active {
+      transform: translateY(0);
+    }
+
+    #close-mobile-navigation {
+      cursor: pointer;
+      font-size: 1.5em;
+      height: 29px;
+      left: 2rem;
+      line-height: 29px;
+      position: absolute;
+      top: 2rem;
+      @include animation(.3s);
+    }
+
+    h2 {
+      margin: 0 0 15px 0;
+      text-align: center;
+    }
+
+    ul {
+      display: block;
+      margin: 0;
+      padding: 0;
+
+      li {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+
+        a {
+          font-weight: 500;
+          line-height: 40px;
+          position: relative;
+          @include font(18px);
+          @include animation(0.3s);
+          @include hoverBottomAnimation(2px, $text-color);
+          text-decoration: none;
+
+          &:focus {
+            outline: none;
+          }
+
+          &:focus:after,
+          &:hover:after {
+            left: 0;
+            width: 100%;
+          }
+        }
+
+        form {
+          @include flex(column);
+          height: 40px;
+          margin: 15px auto 0 auto;
+          max-width: 250px;
+          justify-content: center;
+
+          .input-field {
+            input {
+              text-align: center;
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  ul.navigation {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  nav {
+    .toggle-navigation {
+      display: none;
+    }
+
+    .mobile-navigation {
+      display: none;
+    }
+
+    ul.navigation {
+      @include flex(row);
+      justify-content: space-around;
+      margin: 0;
+      padding: 0;
+
+      li {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        a {
+          position: relative;
+          line-height: 70px;
+          text-decoration: none;
+          @include font(16px);
+          @include animation(0.3s);
+          @include hoverBottomAnimation(2px, $text-color);
+          font-weight: 500;
+
+          &:focus {
+            outline: none;
+          }
+
+          &:focus:after,
+          &:hover:after {
+            left: 0;
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}

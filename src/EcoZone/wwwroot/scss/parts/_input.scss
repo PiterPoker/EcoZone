@@ -1,0 +1,138 @@
+.input-field {
+  margin-bottom: 20px;
+  position: relative;
+
+  textarea {
+    display: block;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  input, textarea {
+    background: #fff;
+    border: 0;
+    border-bottom: solid 2px #ccc;
+    box-sizing: border-box;
+    margin: 0;
+    outline: none;
+    padding: 10px;
+
+    &:focus + label:after {
+      left: 0;
+      width: 100%;
+    }
+
+    ::-moz-placeholder {
+      font-weight: 100;
+    }
+
+    :-moz-placeholder {
+      font-weight: 100;
+    }
+
+    ::-webkit-input-placeholder {
+      font-weight: 100;
+    }
+
+    :-ms-input-placeholder {
+      font-weight: 100;
+    }
+  }
+
+  label {
+    @include hoverBottomAnimation(2px, $text-color);
+  }
+
+  i.icon {
+    animation-delay: 0.1s;
+    color: #ccc;
+    font-size: 19px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    @include animation(.3s);
+  }
+
+  input:focus ~ i.icon, textarea:focus ~ i.icon {
+    color: $text-color;
+  }
+
+  input.has-icon, textarea.has-icon {
+    padding: 0 0 2px 20px;
+  }
+}
+
+.file-field {
+  margin-bottom: 20px;
+
+  input[type=file] {
+    height: 0;
+    left: -100%;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    width: 0;
+  }
+
+  span {
+    margin-left: 10px;
+  }
+}
+
+div.tagsinput {
+  border: 0;
+  border-bottom: solid 2px #ccc;
+  box-sizing: border-box;
+  margin: 0;
+  outline: none;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  position: relative;
+
+  span.tag {
+    background: #F6F6F6;
+    border: 1px solid #CCC;
+    border-radius: 2px;
+    color: $black;
+    display: block;
+    font-size: 13px;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    padding: 5px;
+    text-decoration: none a {
+      color: $black;
+      font-size: 11px;
+      font-weight: 700;
+      text-decoration: none
+    }
+  }
+
+  input {
+    background: 0 0;
+    border: 1px solid transparent;
+    color: #000;
+    font-size: 1rem;
+    margin: 0 5px 5px 0;
+    outline: 0;
+    padding: 10px;
+    width: 80px
+  }
+
+  div {
+    display: block;
+  }
+}
+
+.tags_clear {
+  clear: both;
+  height: 0;
+  width: 100%
+}
+
+.not_valid {
+  background: #FBD8DB !important;
+  color: #90111A !important
+}

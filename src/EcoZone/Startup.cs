@@ -1,18 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
+using DataAccessProvider;
+using Domain;
 using Domain.Model;
+using EcoZone.Data;
+using EcoZone.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using EcoZone.Data;
-using EcoZone.Models;
-using EcoZone.Services;
 using Newtonsoft.Json;
 
 namespace EcoZone
@@ -23,14 +23,11 @@ namespace EcoZone
         {
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
-                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
+                .AddJsonFile("appsettings.json", true, true)
+                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", true)
                 .AddJsonFile("config.json", true, true);
             if (env.IsDevelopment())
-            {
-                // For more details on using the user secret store see http://go.microsoft.com/fwlink/?LinkID=532709
                 builder.AddUserSecrets();
-            }
 
             builder.AddEnvironmentVariables();
             Configuration = builder.Build();
@@ -53,6 +50,13 @@ namespace EcoZone
                 .AddEntityFrameworkStores<DomainModelContext>()
                 .AddDefaultTokenProviders();
 
+            services.AddScoped<IDataAccessProvider<Block>, DataAccessProvider<Block>>();
+            services.AddScoped<IDataAccessProvider<BlockType>, DataAccessProvider<BlockType>>();
+            services.AddScoped<IDataAccessProvider<Comment>, DataAccessProvider<Comment>>();
+            services.AddScoped<IDataAccessProvider<Like>, DataAccessProvider<Like>>();
+            services.AddScoped<IDataAccessProvider<Tag>, DataAccessProvider<Tag>>();
+            services.AddScoped<IDataAccessProvider<Unit>, DataAccessProvider<Unit>>();
+
             services.AddMvc()
                 .AddJsonOptions(
                     options => { options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore; });
@@ -68,7 +72,6 @@ namespace EcoZone
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
-           
 
             if (env.IsDevelopment())
             {
@@ -81,7 +84,6 @@ namespace EcoZone
                 app.UseExceptionHandler("/Home/Error");
             }
 
-           
 
             app.UseStaticFiles();
 
@@ -92,9 +94,37 @@ namespace EcoZone
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    "default",
+                    "{controller=Home}/{action=Index}/{id?}");
             });
+            DatabaseInitialize(app.ApplicationServices).Wait();
+        }
+        private async Task DatabaseInitialize(IServiceProvider serviceProvider)
+        {
+            string[] roles = { "Moderator", "Author", "User", "Admin" };
+
+            var userManager = serviceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+            var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+
+            var adminEmail = "admin@admin.com";
+            var password = "Aaa123!";
+
+            foreach (var role in roles)
+                if (await roleManager.FindByNameAsync(role) == null)
+                    await roleManager.CreateAsync(new IdentityRole(role));
+
+            if (await userManager.FindByNameAsync(adminEmail) == null)
+            {
+                var admin = new ApplicationUser
+                {
+                    Email = adminEmail,
+                    UserName = adminEmail,
+                    FirstName = "Администратор"
+                };
+                var result = await userManager.CreateAsync(admin, password);
+                if (result.Succeeded)
+                    await userManager.AddToRoleAsync(admin, "Admin");
+            }
         }
     }
 }

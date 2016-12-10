@@ -1,0 +1,27 @@
+.scroll-pointer {
+  display: none;
+  background-color: #fff;
+  border: 2px solid $black;
+  border-radius: 25px;
+  height: 50px;
+  left: calc(50% - 16px);
+  position: fixed;
+  top: calc(50% - 16px);
+  width: 30px;
+
+  .pointer {
+    animation: pointerAnimation .9s ease-in-out infinite;
+    background-color: $black;
+    border-radius: 4px;
+    font-size: 1.5rem;
+    height: 8px;
+    margin: 8px auto 0 auto;
+    width: 6px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .scroll-pointer {
+    display: block;
+  }
+}

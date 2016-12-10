@@ -1,5 +1,6 @@
 ﻿{
   "ConnectionStrings": {
-    "EcoZoneDb": "Server=(localdb)\\MSSQLLocalDB;Database=EcoZoneDb;Trusted_Connection=True;MultipleActiveResultSets=true"
+    "EcoZoneDb":
+      "Server=(localdb)\\MSSQLLocalDB;Database=EcoZoneDb;Trusted_Connection=True;MultipleActiveResultSets=true"
   }
 }

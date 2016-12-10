@@ -1,0 +1,61 @@
+.button {
+  @include font(14px);
+  background: transparent;
+  border: none;
+  border-radius: 2px;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: inline-block;
+  letter-spacing: .03em;
+  margin: 5px 0;
+  padding: 10px 20px;
+  position: relative;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  text: {
+    decoration: none;
+    transform: uppercase;
+  }
+  @include animation(.3s);
+
+  &:hover {
+    background: #fff;
+    color: $text-color;
+    box-shadow: 0 0 2px rgba(0, 0, 0, .12), 0 2px 2px rgba(0, 0, 0, .2);
+    outline: none;
+    outline: 0;
+  }
+
+  &__vol {
+    background: #fff;
+    box-shadow: 0 0 2px rgba(0, 0, 0, .12), 0 2px 2px rgba(0, 0, 0, .2);
+  }
+
+  &.dark {
+    background: $black;
+    color: #fff;
+
+    &:hover {
+      background: #fff;
+      color: $text-color;
+    }
+  }
+}
+
+.load-more__button {
+  margin-top: 20px;
+}
+
+.skw-page__button {
+  margin: 2rem 0 0 0;
+
+  &.light {
+    background: $black;
+    color: #fff;
+  }
+
+  &.dark {
+    background: #fff;
+    color: $text-color;
+  }
+}
