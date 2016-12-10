@@ -4,7 +4,6 @@ namespace EcoZone.Models.AccountViewModels
 {
     public class RegisterViewModel
     {
-
         [Required]
         [Display(Name = "Имя")]
         public string FirstName { get; set; }

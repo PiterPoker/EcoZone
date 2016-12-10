@@ -34,20 +34,20 @@ function routes($stateProvider, $httpProvider, $urlRouterProvider) {
         .state("profile", {
             url: "/profile",
             templateUrl: "../app/profile.html",
-            controller: "profileController",
+            controller: "profileController"
         })
         .state("users", {
             url: "/users",
             templateUrl: "../app/users.html",
-            controller: "userController",
+            controller: "userController"
         })
         .state("settings", {
             url: "/settings",
-            templateUrl: "../app/settings.html",
+            templateUrl: "../app/settings.html"
         })
         .state("help", {
             url: "/help",
-            templateUrl: "../app/help.html",
+            templateUrl: "../app/help.html"
         })
         .state("news", {
             url: "/news",

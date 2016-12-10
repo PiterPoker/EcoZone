@@ -1,9 +1,6 @@
 ﻿using System.Collections.Generic;
-using System.Threading.Tasks;
 using DataAccessProvider;
-using Domain.Model;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace EcoZone.Controllers
 {
