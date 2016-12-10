@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
-using EcoZone.Data;
+using DataAccessProvider;
 
 namespace ecozone.Migrations
 {
@@ -30,6 +30,10 @@ namespace ecozone.Migrations
 
                     b.Property<bool>("EmailConfirmed");
 
+                    b.Property<string>("FirstName");
+
+                    b.Property<string>("LastName");
+
                     b.Property<bool>("LockoutEnabled");
 
                     b.Property<DateTimeOffset?>("LockoutEnd");
@@ -45,6 +49,10 @@ namespace ecozone.Migrations
                     b.Property<string>("PhoneNumber");
 
                     b.Property<bool>("PhoneNumberConfirmed");
+
+                    b.Property<byte[]>("Photo");
+
+                    b.Property<string>("PhotoType");
 
                     b.Property<string>("SecurityStamp");
 
@@ -63,6 +71,135 @@ namespace ecozone.Migrations
                         .HasName("UserNameIndex");
 
                     b.ToTable("AspNetUsers");
+                });
+
+            modelBuilder.Entity("Domain.Model.Block", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<byte[]>("Image");
+
+                    b.Property<string>("ImageType");
+
+                    b.Property<int>("Number");
+
+                    b.Property<string>("Text");
+
+                    b.Property<int>("TypeId");
+
+                    b.Property<int>("UnitId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TypeId");
+
+                    b.HasIndex("UnitId");
+
+                    b.ToTable("Blocks");
+                });
+
+            modelBuilder.Entity("Domain.Model.BlockType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("BlockType");
+                });
+
+            modelBuilder.Entity("Domain.Model.Comment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("AuthorId");
+
+                    b.Property<string>("Body");
+
+                    b.Property<DateTime>("Date");
+
+                    b.Property<int>("UnitId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AuthorId");
+
+                    b.HasIndex("UnitId");
+
+                    b.ToTable("Comment");
+                });
+
+            modelBuilder.Entity("Domain.Model.Like", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("AuthorId");
+
+                    b.Property<int>("UnitId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AuthorId");
+
+                    b.HasIndex("UnitId");
+
+                    b.ToTable("Like");
+                });
+
+            modelBuilder.Entity("Domain.Model.Tag", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Tag");
+                });
+
+            modelBuilder.Entity("Domain.Model.Unit", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("AuthorId");
+
+                    b.Property<byte[]>("Cover");
+
+                    b.Property<string>("CoverType");
+
+                    b.Property<DateTime>("Date");
+
+                    b.Property<string>("Name");
+
+                    b.Property<long>("Views");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AuthorId");
+
+                    b.ToTable("Unit");
+                });
+
+            modelBuilder.Entity("Domain.Model.UnitTags", b =>
+                {
+                    b.Property<int>("TagId");
+
+                    b.Property<int>("UnitId");
+
+                    b.HasKey("TagId", "UnitId");
+
+                    b.HasIndex("TagId");
+
+                    b.HasIndex("UnitId");
+
+                    b.ToTable("UnitTags");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRole", b =>
@@ -170,6 +307,63 @@ namespace ecozone.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("Domain.Model.Block", b =>
+                {
+                    b.HasOne("Domain.Model.BlockType", "Type")
+                        .WithMany("Blocks")
+                        .HasForeignKey("TypeId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Domain.Model.Unit", "Unit")
+                        .WithMany("Blocks")
+                        .HasForeignKey("UnitId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Domain.Model.Comment", b =>
+                {
+                    b.HasOne("Domain.Model.ApplicationUser", "Author")
+                        .WithMany("Comments")
+                        .HasForeignKey("AuthorId");
+
+                    b.HasOne("Domain.Model.Unit", "Unit")
+                        .WithMany("Comments")
+                        .HasForeignKey("UnitId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Domain.Model.Like", b =>
+                {
+                    b.HasOne("Domain.Model.ApplicationUser", "Author")
+                        .WithMany("Likes")
+                        .HasForeignKey("AuthorId");
+
+                    b.HasOne("Domain.Model.Unit", "Unit")
+                        .WithMany("Likes")
+                        .HasForeignKey("UnitId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Domain.Model.Unit", b =>
+                {
+                    b.HasOne("Domain.Model.ApplicationUser", "Author")
+                        .WithMany("Units")
+                        .HasForeignKey("AuthorId");
+                });
+
+            modelBuilder.Entity("Domain.Model.UnitTags", b =>
+                {
+                    b.HasOne("Domain.Model.Tag", "Tag")
+                        .WithMany("Units")
+                        .HasForeignKey("TagId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Domain.Model.Unit", "Unit")
+                        .WithMany("Tags")
+                        .HasForeignKey("UnitId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRoleClaim<string>", b =>

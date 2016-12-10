@@ -1,0 +1,33 @@
+.profile-section {
+  margin: 70px 0;
+
+  .profile-info-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .cover {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: {
+        size: cover;
+        position: center;
+        repeat: no-repeat;
+      }
+    }
+
+    .profile-name {
+      margin-top: 15px;
+      font-size: 1.5rem;
+    }
+
+    .edit-profile-button {
+      margin-top: 10px;
+    }
+
+    .profile-description {
+      margin-top: 15px;
+    }
+  }
+}

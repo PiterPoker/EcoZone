@@ -1,0 +1,58 @@
+@mixin font($font-size) {
+  font: {
+    size: $font-size;
+    weight: normal;
+  }
+  color: $text-color;
+}
+
+@mixin fixed($top, $right, $bottom, $left) {
+  position: fixed;
+  top: $top;
+  left: $left;
+  right: $right;
+  bottom: $bottom;
+}
+
+@mixin animation($seconds) {
+  transition: all $seconds ease-in-out;
+}
+
+@mixin hoverBottomAnimation($height, $color) {
+  &:after {
+    background: $color;
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    height: $height;
+    width: 0;
+    @include animation(0.3s);
+  }
+}
+
+@mixin disableSelect() {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: default;
+}
+
+@mixin cutText() {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+@mixin cutTextBlock($lineCount) {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: $lineCount;
+  -webkit-box-orient: vertical;
+}
+
+@mixin flex($direction) {
+  display: flex;
+  flex-direction: $direction;
+}

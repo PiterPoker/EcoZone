@@ -1,0 +1,36 @@
+.tags {
+  @include flex(row);
+  padding: 1.5rem 0 1.5rem 50px;
+  position: relative;
+  flex-wrap: wrap;
+
+  .tag {
+    color: $text-lighter-color;
+    font-size: 1.1rem;
+    margin: 5px;
+    position: relative;
+    text-decoration: none;
+    @include animation(0.3s);
+    @include hoverBottomAnimation(2px, $text-lighter-color);
+
+    &:focus {
+      outline: none;
+    }
+
+    &:focus:after,
+    &:hover:after {
+      left: 0;
+      width: 100%;
+    }
+  }
+
+  &:before {
+    content: '\f02c';
+    font-family: FontAwesome;
+    font-size: 30px;
+    left: 0;
+    line-height: 31px;
+    position: absolute;
+    top: calc(50% - 15.5px);
+  }
+}

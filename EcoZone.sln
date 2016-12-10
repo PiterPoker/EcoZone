@@ -16,8 +16,6 @@ Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Domain", "src\Domain\Domain
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "DataAccessProvider", "src\DataAccessProvider\DataAccessProvider.xproj", "{5CE49D2B-4C18-431C-88D3-B396C710CDBF}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "BusinessLogic", "src\BusinessLogic\BusinessLogic.xproj", "{C90632D3-A747-406A-8A43-E3BE63FD46C1}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,10 +34,6 @@ Global
 		{5CE49D2B-4C18-431C-88D3-B396C710CDBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5CE49D2B-4C18-431C-88D3-B396C710CDBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5CE49D2B-4C18-431C-88D3-B396C710CDBF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C90632D3-A747-406A-8A43-E3BE63FD46C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C90632D3-A747-406A-8A43-E3BE63FD46C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C90632D3-A747-406A-8A43-E3BE63FD46C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C90632D3-A747-406A-8A43-E3BE63FD46C1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -48,6 +42,5 @@ Global
 		{F28CF2A9-0F95-41DF-824C-278033DBCA46} = {C4CE0F45-6F09-40D3-B111-7A9D4962E5C7}
 		{78E89647-9A25-4BF5-8779-5BAC8405134B} = {C4CE0F45-6F09-40D3-B111-7A9D4962E5C7}
 		{5CE49D2B-4C18-431C-88D3-B396C710CDBF} = {C4CE0F45-6F09-40D3-B111-7A9D4962E5C7}
-		{C90632D3-A747-406A-8A43-E3BE63FD46C1} = {C4CE0F45-6F09-40D3-B111-7A9D4962E5C7}
 	EndGlobalSection
 EndGlobal

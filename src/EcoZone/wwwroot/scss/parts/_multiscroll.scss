@@ -1,0 +1,205 @@
+*, *:before, *:after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.skw-pages {
+  overflow: visible;
+  position: relative;
+}
+
+.skw-page {
+  position: relative;
+  width: 100%;
+
+  &__half {
+    height: 50vh;
+    position: relative;
+    width: 100%;
+  }
+
+  &__skewed {
+    background: $light-background;
+    height: 100%;
+    position: relative;
+    width: 100%;
+  }
+
+  &__content {
+    background-attachment: fixed;
+    background-size: cover;
+    color: #fff;
+    display: flex;
+    height: 100%;
+    padding: 0 30%;
+    position: relative;
+    transition: transform $scrollTime, opacity $scrollTime;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column wrap;
+
+    .skw-page__half--left & {
+      padding-left: 30%;
+      padding-right: 30%;
+      transform-origin: 100% 0;
+    }
+    .skw-page__half--right & {
+      padding-left: 30%;
+      padding-right: 30%;
+      transform-origin: 0 100%;
+    }
+  }
+
+  .head {
+    font-size: 25px;
+    margin-bottom: 2rem;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .description {
+    font-size: 18px;
+    text-align: center;
+  }
+
+  .button {
+    margin-top: 2rem;
+  }
+
+  &-1 {
+    .skw-page__half--left .skw-page__content {
+      background: #fff;
+      color: $text-color;
+    }
+    .skw-page__half--right .skw-page__content {
+      background: $black;
+    }
+  }
+  &-2 {
+    .skw-page__half--left .skw-page__content {
+      background-image: url(../img/blocks/block-3.jpg);
+    }
+    .skw-page__half--right .skw-page__content {
+      background: $black;
+    }
+  }
+  &-3 {
+    .skw-page__half--left .skw-page__content {
+      background: #fff;
+      color: $text-color;
+    }
+    .skw-page__half--right .skw-page__content {
+      background-image: url(../img/blocks/block-2.jpg);
+      background-position: center left;
+    }
+  }
+  &-4 {
+    .skw-page__half--left .skw-page__content {
+      background-image: url(../img/blocks/block-8.jpg);
+    }
+    .skw-page__half--right .skw-page__content {
+      background: $black;
+    }
+  }
+  &-5 {
+    .skw-page__half--left .skw-page__content {
+      background: #fff;
+      color: $text-color;
+    }
+    .skw-page__half--right .skw-page__content {
+      background-image: url(../img/blocks/block-7.jpg);
+    }
+  }
+  &-6 {
+    .skw-page__half--left .skw-page__content {
+      background-image: url(../img/blocks/block-1.jpg);
+    }
+    .skw-page__half--right .skw-page__content {
+      background: $black;
+    }
+  }
+  &-7 {
+    .skw-page__half--left .skw-page__content {
+      background: #fff;
+      color: $text-color;
+    }
+    .skw-page__half--right .skw-page__content {
+      background: $black;
+    }
+  }
+  &-8 {
+    .skw-page__half--left .skw-page__content {
+      background: #fff;
+      color: $text-color;
+    }
+    .skw-page__half--right .skw-page__content {
+      background-image: url(../img/blocks/block-6.jpg);
+    }
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .skw-pages {
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  .skw-page {
+    left: 0;
+    position: absolute;
+    top: 0;
+
+    &__half {
+      height: 100vh;
+      position: absolute;
+      top: 0;
+      transition: transform $scrollTime;
+      width: 50%;
+
+      &--left {
+        left: 0;
+        transform: translate3d(-$magicVH, 100%, 0);
+      }
+
+      &--right {
+        left: 50%;
+        transform: translate3d($magicVH, -100%, 0);
+      }
+
+      .skw-page.active & {
+        transform: translate3d(0, 0, 0);
+      }
+    }
+
+    &__skewed {
+      overflow: hidden;
+      position: absolute;
+      top: 0;
+      transform: skewX($skewDeg * -1);
+      width: 140%;
+
+      .skw-page__half--left & {
+        left: -40%;
+      }
+
+      .skw-page__half--right & {
+        right: -40%;
+      }
+    }
+
+    &__content {
+      background-attachment: scroll;
+      transform: skewX($skewDeg);
+      position: relative;
+      top: 0;
+      left: 0;
+
+      .skw-page.inactive & {
+        opacity: 0.5;
+        transform: skewX($skewDeg) scale(0.95);
+      }
+    }
+  }
+}

@@ -1,0 +1,32 @@
+body {
+  background: $light-background;
+}
+
+.centered {
+  display: flex;
+  justify-content: center;
+}
+
+.center-align {
+  text-align: center;
+}
+
+.menu-height {
+  height: 70px;
+}
+
+.title-block {
+  margin: 0 auto;
+  max-width: 500px;
+  padding: 50px 0;
+
+  h3 {
+    margin: 0 0 1rem 0;
+  }
+
+  .p {
+    color: $text-light-color;
+    display: block;
+    margin: 0 0 1rem 0;
+  }
+}
