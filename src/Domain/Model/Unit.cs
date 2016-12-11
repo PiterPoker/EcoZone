@@ -5,25 +5,23 @@ namespace Domain.Model
 {
     public class Unit
     {
-        public Unit()
-        {
-            Views = 0;
-            Date = DateTime.Now;
-        }
-
         public int Id { get; set; }
         public string Name { get; set; }
-        public DateTime Date { get; set; }
+        public DateTime Date { get; set; } = DateTime.Now;
         public byte[] Cover { get; set; }
         public string CoverType { get; set; }
-        public ApplicationUser Author { get; set; }
-        public string AuthorId { get; set; }
-        public long Views { get; set; }
+        public long Views { get; set; } = 0;
+        public bool IsApproved { get; set; } = false;
+
         public List<Comment> Comments { get; set; }
         public List<UnitTags> Tags { get; set; }
         public List<Like> Likes { get; set; }
-
         public List<Block> Blocks { get; set; }
+
+        public ApplicationUser Author { get; set; }
+        public string AuthorId { get; set; }
+        public Unit PendingUnit { get; set; }
+        public int? PendingUnitId { get; set; }
 
         public void SortBlocks()
         {

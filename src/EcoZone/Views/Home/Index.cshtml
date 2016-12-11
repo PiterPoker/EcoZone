@@ -4,34 +4,34 @@
 <!DOCTYPE html>
 <html ng-app="ecoZone" ng-controller="mainController">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>{{title}}</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>{{title}}</title>
 
-  <environment names="Development,Staging,Production">
-    <link rel="stylesheet" href="~/lib/normalize-css/normalize.css"/>
-    <link href="~/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="~/lib/ngprogress/ngProgress.css"/>
-    <link rel="stylesheet" href="~/css/site.min.css"/>
-  </environment>
+    <environment names="Development,Staging,Production">
+        <link rel="stylesheet" href="~/lib/normalize-css/normalize.css"/>
+        <link href="~/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet"/>
+        <link rel="stylesheet" href="~/lib/ngprogress/ngProgress.css"/>
+        <link rel="stylesheet" href="~/css/main.min.css"/>
+    </environment>
 </head>
 <body>
 
 <div ui-view=""></div>
 
 <environment names="Development,Staging,Production">
-  <script src="~/lib/jquery/dist/jquery.js"></script>
-  <script src="~/lib/angular/angular.min.js"></script>
-  <script src="~/lib/angular-local-storage/dist/angular-local-storage.min.js"></script>
-  <script src="~/lib/angular-ui-router/release/angular-ui-router.min.js"></script>
-  <script src="~/lib/angular-route/angular-route.min.js"></script>
-  <script src="~/lib/angular-cookies/angular-cookies.min.js"></script>
-  <script src="~/lib/angular-resource/angular-resource.min.js"></script>
-  <script src="~/lib/angular-animate/angular-animate.min.js"></script>
-  <script src="~/lib/angular-aria/angular-aria.min.js"></script>
-  <script src="~/lib/angular-messages/angular-messages.min.js"></script>
-  <script src="~/lib/ngprogress/build/ngprogress.min.js"></script>
-  <script src="~/js/site.min.js" asp-append-version="true"></script>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/angular/angular.min.js"></script>
+    <script src="~/lib/angular-local-storage/dist/angular-local-storage.min.js"></script>
+    <script src="~/lib/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="~/lib/angular-route/angular-route.min.js"></script>
+    <script src="~/lib/angular-cookies/angular-cookies.min.js"></script>
+    <script src="~/lib/angular-resource/angular-resource.min.js"></script>
+    <script src="~/lib/angular-animate/angular-animate.min.js"></script>
+    <script src="~/lib/angular-aria/angular-aria.min.js"></script>
+    <script src="~/lib/angular-messages/angular-messages.min.js"></script>
+    <script src="~/lib/ngprogress/build/ngprogress.min.js"></script>
+    <script src="~/js/site.min.js"></script>
 </environment>
 </body>
 </html>

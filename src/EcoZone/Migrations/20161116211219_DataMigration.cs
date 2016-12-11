@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ecozone.Migrations
 {
@@ -10,8 +9,8 @@ namespace ecozone.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "AspNetUsers",
-                columns: table => new
+                "AspNetUsers",
+                table => new
                 {
                     Id = table.Column<string>(nullable: false),
                     AccessFailedCount = table.Column<int>(nullable: false),
@@ -33,68 +32,54 @@ namespace ecozone.Migrations
                     TwoFactorEnabled = table.Column<bool>(nullable: false),
                     UserName = table.Column<string>(maxLength: 256, nullable: true)
                 },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AspNetUsers", x => x.Id);
-                });
+                constraints: table => { table.PrimaryKey("PK_AspNetUsers", x => x.Id); });
 
             migrationBuilder.CreateTable(
-                name: "BlockType",
-                columns: table => new
+                "BlockType",
+                table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(nullable: true)
                 },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_BlockType", x => x.Id);
-                });
+                constraints: table => { table.PrimaryKey("PK_BlockType", x => x.Id); });
 
             migrationBuilder.CreateTable(
-                name: "Tag",
-                columns: table => new
+                "Tag",
+                table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(nullable: true)
                 },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Tag", x => x.Id);
-                });
+                constraints: table => { table.PrimaryKey("PK_Tag", x => x.Id); });
 
             migrationBuilder.CreateTable(
-                name: "AspNetRoles",
-                columns: table => new
+                "AspNetRoles",
+                table => new
                 {
                     Id = table.Column<string>(nullable: false),
                     ConcurrencyStamp = table.Column<string>(nullable: true),
                     Name = table.Column<string>(maxLength: 256, nullable: true),
                     NormalizedName = table.Column<string>(maxLength: 256, nullable: true)
                 },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AspNetRoles", x => x.Id);
-                });
+                constraints: table => { table.PrimaryKey("PK_AspNetRoles", x => x.Id); });
 
             migrationBuilder.CreateTable(
-                name: "AspNetUserTokens",
-                columns: table => new
+                "AspNetUserTokens",
+                table => new
                 {
                     UserId = table.Column<string>(nullable: false),
                     LoginProvider = table.Column<string>(nullable: false),
                     Name = table.Column<string>(nullable: false),
                     Value = table.Column<string>(nullable: true)
                 },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AspNetUserTokens", x => new { x.UserId, x.LoginProvider, x.Name });
-                });
+                constraints:
+                table => { table.PrimaryKey("PK_AspNetUserTokens", x => new {x.UserId, x.LoginProvider, x.Name}); });
 
             migrationBuilder.CreateTable(
-                name: "Unit",
-                columns: table => new
+                "Unit",
+                table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
@@ -109,16 +94,16 @@ namespace ecozone.Migrations
                 {
                     table.PrimaryKey("PK_Unit", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Unit_AspNetUsers_AuthorId",
-                        column: x => x.AuthorId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
+                        "FK_Unit_AspNetUsers_AuthorId",
+                        x => x.AuthorId,
+                        "AspNetUsers",
+                        "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
-                name: "AspNetUserClaims",
-                columns: table => new
+                "AspNetUserClaims",
+                table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
@@ -130,16 +115,16 @@ namespace ecozone.Migrations
                 {
                     table.PrimaryKey("PK_AspNetUserClaims", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_AspNetUserClaims_AspNetUsers_UserId",
-                        column: x => x.UserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
+                        "FK_AspNetUserClaims_AspNetUsers_UserId",
+                        x => x.UserId,
+                        "AspNetUsers",
+                        "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "AspNetUserLogins",
-                columns: table => new
+                "AspNetUserLogins",
+                table => new
                 {
                     LoginProvider = table.Column<string>(nullable: false),
                     ProviderKey = table.Column<string>(nullable: false),
@@ -148,18 +133,18 @@ namespace ecozone.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AspNetUserLogins", x => new { x.LoginProvider, x.ProviderKey });
+                    table.PrimaryKey("PK_AspNetUserLogins", x => new {x.LoginProvider, x.ProviderKey});
                     table.ForeignKey(
-                        name: "FK_AspNetUserLogins_AspNetUsers_UserId",
-                        column: x => x.UserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
+                        "FK_AspNetUserLogins_AspNetUsers_UserId",
+                        x => x.UserId,
+                        "AspNetUsers",
+                        "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "AspNetRoleClaims",
-                columns: table => new
+                "AspNetRoleClaims",
+                table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
@@ -171,40 +156,40 @@ namespace ecozone.Migrations
                 {
                     table.PrimaryKey("PK_AspNetRoleClaims", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_AspNetRoleClaims_AspNetRoles_RoleId",
-                        column: x => x.RoleId,
-                        principalTable: "AspNetRoles",
-                        principalColumn: "Id",
+                        "FK_AspNetRoleClaims_AspNetRoles_RoleId",
+                        x => x.RoleId,
+                        "AspNetRoles",
+                        "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "AspNetUserRoles",
-                columns: table => new
+                "AspNetUserRoles",
+                table => new
                 {
                     UserId = table.Column<string>(nullable: false),
                     RoleId = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AspNetUserRoles", x => new { x.UserId, x.RoleId });
+                    table.PrimaryKey("PK_AspNetUserRoles", x => new {x.UserId, x.RoleId});
                     table.ForeignKey(
-                        name: "FK_AspNetUserRoles_AspNetRoles_RoleId",
-                        column: x => x.RoleId,
-                        principalTable: "AspNetRoles",
-                        principalColumn: "Id",
+                        "FK_AspNetUserRoles_AspNetRoles_RoleId",
+                        x => x.RoleId,
+                        "AspNetRoles",
+                        "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_AspNetUserRoles_AspNetUsers_UserId",
-                        column: x => x.UserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
+                        "FK_AspNetUserRoles_AspNetUsers_UserId",
+                        x => x.UserId,
+                        "AspNetUsers",
+                        "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Blocks",
-                columns: table => new
+                "Blocks",
+                table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
@@ -219,22 +204,22 @@ namespace ecozone.Migrations
                 {
                     table.PrimaryKey("PK_Blocks", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Blocks_BlockType_TypeId",
-                        column: x => x.TypeId,
-                        principalTable: "BlockType",
-                        principalColumn: "Id",
+                        "FK_Blocks_BlockType_TypeId",
+                        x => x.TypeId,
+                        "BlockType",
+                        "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Blocks_Unit_UnitId",
-                        column: x => x.UnitId,
-                        principalTable: "Unit",
-                        principalColumn: "Id",
+                        "FK_Blocks_Unit_UnitId",
+                        x => x.UnitId,
+                        "Unit",
+                        "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Comment",
-                columns: table => new
+                "Comment",
+                table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
@@ -247,22 +232,22 @@ namespace ecozone.Migrations
                 {
                     table.PrimaryKey("PK_Comment", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Comment_AspNetUsers_AuthorId",
-                        column: x => x.AuthorId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
+                        "FK_Comment_AspNetUsers_AuthorId",
+                        x => x.AuthorId,
+                        "AspNetUsers",
+                        "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Comment_Unit_UnitId",
-                        column: x => x.UnitId,
-                        principalTable: "Unit",
-                        principalColumn: "Id",
+                        "FK_Comment_Unit_UnitId",
+                        x => x.UnitId,
+                        "Unit",
+                        "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Like",
-                columns: table => new
+                "Like",
+                table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
@@ -273,173 +258,173 @@ namespace ecozone.Migrations
                 {
                     table.PrimaryKey("PK_Like", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Like_AspNetUsers_AuthorId",
-                        column: x => x.AuthorId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
+                        "FK_Like_AspNetUsers_AuthorId",
+                        x => x.AuthorId,
+                        "AspNetUsers",
+                        "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Like_Unit_UnitId",
-                        column: x => x.UnitId,
-                        principalTable: "Unit",
-                        principalColumn: "Id",
+                        "FK_Like_Unit_UnitId",
+                        x => x.UnitId,
+                        "Unit",
+                        "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "UnitTags",
-                columns: table => new
+                "UnitTags",
+                table => new
                 {
                     TagId = table.Column<int>(nullable: false),
                     UnitId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_UnitTags", x => new { x.TagId, x.UnitId });
+                    table.PrimaryKey("PK_UnitTags", x => new {x.TagId, x.UnitId});
                     table.ForeignKey(
-                        name: "FK_UnitTags_Tag_TagId",
-                        column: x => x.TagId,
-                        principalTable: "Tag",
-                        principalColumn: "Id",
+                        "FK_UnitTags_Tag_TagId",
+                        x => x.TagId,
+                        "Tag",
+                        "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_UnitTags_Unit_UnitId",
-                        column: x => x.UnitId,
-                        principalTable: "Unit",
-                        principalColumn: "Id",
+                        "FK_UnitTags_Unit_UnitId",
+                        x => x.UnitId,
+                        "Unit",
+                        "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "EmailIndex",
-                table: "AspNetUsers",
-                column: "NormalizedEmail");
+                "EmailIndex",
+                "AspNetUsers",
+                "NormalizedEmail");
 
             migrationBuilder.CreateIndex(
-                name: "UserNameIndex",
-                table: "AspNetUsers",
-                column: "NormalizedUserName",
+                "UserNameIndex",
+                "AspNetUsers",
+                "NormalizedUserName",
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Blocks_TypeId",
-                table: "Blocks",
-                column: "TypeId");
+                "IX_Blocks_TypeId",
+                "Blocks",
+                "TypeId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Blocks_UnitId",
-                table: "Blocks",
-                column: "UnitId");
+                "IX_Blocks_UnitId",
+                "Blocks",
+                "UnitId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Comment_AuthorId",
-                table: "Comment",
-                column: "AuthorId");
+                "IX_Comment_AuthorId",
+                "Comment",
+                "AuthorId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Comment_UnitId",
-                table: "Comment",
-                column: "UnitId");
+                "IX_Comment_UnitId",
+                "Comment",
+                "UnitId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Like_AuthorId",
-                table: "Like",
-                column: "AuthorId");
+                "IX_Like_AuthorId",
+                "Like",
+                "AuthorId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Like_UnitId",
-                table: "Like",
-                column: "UnitId");
+                "IX_Like_UnitId",
+                "Like",
+                "UnitId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Unit_AuthorId",
-                table: "Unit",
-                column: "AuthorId");
+                "IX_Unit_AuthorId",
+                "Unit",
+                "AuthorId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_UnitTags_TagId",
-                table: "UnitTags",
-                column: "TagId");
+                "IX_UnitTags_TagId",
+                "UnitTags",
+                "TagId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_UnitTags_UnitId",
-                table: "UnitTags",
-                column: "UnitId");
+                "IX_UnitTags_UnitId",
+                "UnitTags",
+                "UnitId");
 
             migrationBuilder.CreateIndex(
-                name: "RoleNameIndex",
-                table: "AspNetRoles",
-                column: "NormalizedName");
+                "RoleNameIndex",
+                "AspNetRoles",
+                "NormalizedName");
 
             migrationBuilder.CreateIndex(
-                name: "IX_AspNetRoleClaims_RoleId",
-                table: "AspNetRoleClaims",
-                column: "RoleId");
+                "IX_AspNetRoleClaims_RoleId",
+                "AspNetRoleClaims",
+                "RoleId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_AspNetUserClaims_UserId",
-                table: "AspNetUserClaims",
-                column: "UserId");
+                "IX_AspNetUserClaims_UserId",
+                "AspNetUserClaims",
+                "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_AspNetUserLogins_UserId",
-                table: "AspNetUserLogins",
-                column: "UserId");
+                "IX_AspNetUserLogins_UserId",
+                "AspNetUserLogins",
+                "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_AspNetUserRoles_RoleId",
-                table: "AspNetUserRoles",
-                column: "RoleId");
+                "IX_AspNetUserRoles_RoleId",
+                "AspNetUserRoles",
+                "RoleId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_AspNetUserRoles_UserId",
-                table: "AspNetUserRoles",
-                column: "UserId");
+                "IX_AspNetUserRoles_UserId",
+                "AspNetUserRoles",
+                "UserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Blocks");
+                "Blocks");
 
             migrationBuilder.DropTable(
-                name: "Comment");
+                "Comment");
 
             migrationBuilder.DropTable(
-                name: "Like");
+                "Like");
 
             migrationBuilder.DropTable(
-                name: "UnitTags");
+                "UnitTags");
 
             migrationBuilder.DropTable(
-                name: "AspNetRoleClaims");
+                "AspNetRoleClaims");
 
             migrationBuilder.DropTable(
-                name: "AspNetUserClaims");
+                "AspNetUserClaims");
 
             migrationBuilder.DropTable(
-                name: "AspNetUserLogins");
+                "AspNetUserLogins");
 
             migrationBuilder.DropTable(
-                name: "AspNetUserRoles");
+                "AspNetUserRoles");
 
             migrationBuilder.DropTable(
-                name: "AspNetUserTokens");
+                "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "BlockType");
+                "BlockType");
 
             migrationBuilder.DropTable(
-                name: "Tag");
+                "Tag");
 
             migrationBuilder.DropTable(
-                name: "Unit");
+                "Unit");
 
             migrationBuilder.DropTable(
-                name: "AspNetRoles");
+                "AspNetRoles");
 
             migrationBuilder.DropTable(
-                name: "AspNetUsers");
+                "AspNetUsers");
         }
     }
 }

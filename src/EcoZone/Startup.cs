@@ -43,7 +43,7 @@ namespace EcoZone
             services.AddDbContext<DomainModelContext>(options =>
                 options.UseSqlServer(
                     sqlConnectionString,
-                    b => b.MigrationsAssembly("ecozone")
+                    b => b.MigrationsAssembly("EcoZone")
                 ));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
@@ -99,9 +99,10 @@ namespace EcoZone
             });
             DatabaseInitialize(app.ApplicationServices).Wait();
         }
+
         private async Task DatabaseInitialize(IServiceProvider serviceProvider)
         {
-            string[] roles = { "Moderator", "Author", "User", "Admin" };
+            string[] roles = {"Moderator", "Author", "User", "Admin"};
 
             var userManager = serviceProvider.GetRequiredService<UserManager<ApplicationUser>>();
             var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
