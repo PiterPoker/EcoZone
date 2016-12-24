@@ -1,16 +1,17 @@
 ﻿app.config(routes);
 
 function routes($stateProvider, $httpProvider, $urlRouterProvider) {
-    //$httpProvider.interceptors.push("authInterceptorService");
-
-    /*var Auth = function ($q, authService) {
-     authService.fillAuthData();
-     if (authService.authentication.isAuth) {
-     return $q.when(authService.authentication);
-     } else {
-     return $q.reject({authenticated: false});
-     }
-     };*/
+    
+    $httpProvider.interceptors.push("authInterceptorService");
+    
+    var auth = function ($q, authService) {
+        authService.fillAuthData();
+        if (authService.authentication.isAuth) {
+            return $q.when(authService.authentication);
+        } else {
+            return $q.reject({authenticated: false});
+        }
+    };
 
     $urlRouterProvider.otherwise("/");
 
@@ -32,9 +33,12 @@ function routes($stateProvider, $httpProvider, $urlRouterProvider) {
             controller: "signupController"
         })
         .state("profile", {
-            url: "/profile",
+            url: "/profile/:id",
             templateUrl: "../app/profile.html",
-            controller: "profileController"
+            controller: "profileController",
+            resolve: {
+                auth: auth
+            }
         })
         .state("users", {
             url: "/users",
@@ -54,9 +58,14 @@ function routes($stateProvider, $httpProvider, $urlRouterProvider) {
             templateUrl: "../app/news.html",
             controller: "newsController"
         })
-        .state("navigation", {
-            url: "/navigation",
-            templateUrl: "../app/navigation.html",
-            controller: "navigationController"
+        .state("history", {
+            url: "/history",
+            templateUrl: "../app/history.html",
+            controller: "historyController"
+        })
+        .state("about", {
+            url: "/about",
+            templateUrl: "../app/about.html",
+            controller: "aboutController"
         });
 }

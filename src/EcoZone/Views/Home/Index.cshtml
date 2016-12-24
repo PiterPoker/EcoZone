@@ -10,15 +10,13 @@
 
     <environment names="Development,Staging,Production">
         <link rel="stylesheet" href="~/lib/normalize-css/normalize.css"/>
+        <link href="~/lib/angular-material/angular-material.css" rel="stylesheet" />
         <link href="~/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet"/>
         <link rel="stylesheet" href="~/lib/ngprogress/ngProgress.css"/>
         <link rel="stylesheet" href="~/css/main.min.css"/>
     </environment>
 </head>
 <body>
-
-<div ui-view=""></div>
-
 <environment names="Development,Staging,Production">
     <script src="~/lib/jquery/dist/jquery.js"></script>
     <script src="~/lib/angular/angular.min.js"></script>
@@ -31,7 +29,49 @@
     <script src="~/lib/angular-aria/angular-aria.min.js"></script>
     <script src="~/lib/angular-messages/angular-messages.min.js"></script>
     <script src="~/lib/ngprogress/build/ngprogress.min.js"></script>
+    <script src="~/lib/angular-material/angular-material.min.js"></script>
     <script src="~/js/site.min.js"></script>
 </environment>
+<nav>
+    <div class="container-fluid">
+        <div>
+            <div>
+                <a><i class="fa fa-bars"></i></a>
+                <!-- todo apply sidenav-->
+                <div class="mobile-navigation">
+                    <i class="fa fa-close"></i>
+                    <h2>Меню</h2>
+                    <ul>
+                        <li><a ui-sref="main">Главная</a></li>
+                        <li><a ui-sref="news">Новости</a></li>
+                        <li><a ui-sref="history">История</a></li>
+                        <!-- todo create about state-->
+                        <li><a ui-sref="about">О проекте</a></li>
+                        <li>
+                            <form>
+                                <div class="input-field">
+                                    <input type="text" title="поиск" class="has-icon">
+                                    <label></label>
+                                    <i class="fa fa-search icon"></i>
+                                </div>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+                <ul class="navigation">
+                    <li><a ui-sref="main">Главная</a></li>
+                    <li><a ui-sref="news">Новости</a></li>
+                    <li><a ui-sref="history">История</a></li>
+                    <li><a ui-sref="about">О проекте</a></li>
+                    <li>
+                        <a href="" ng-click="showSearchDialog($event)">Поиск</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div ui-view=""></div>
 </body>
 </html>
