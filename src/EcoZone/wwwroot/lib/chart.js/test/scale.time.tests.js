@@ -332,7 +332,7 @@ describe('Time scale tests', function() {
 		var mockContext = window.createMockContext();
 		var config = Chart.helpers.clone(Chart.scaleService.getScaleDefaults('time'));
 		config.time.min = "2015-01-01T04:00:00";
-		config.time.max = "2015-01-05T06:00:00"
+		config.time.max = "2015-01-05T06:00:00";
 		var Constructor = Chart.scaleService.getScaleConstructor('time');
 		var scale = new Constructor({
 			ctx: mockContext,

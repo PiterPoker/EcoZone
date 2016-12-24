@@ -94,7 +94,7 @@
 				scope.record(name, arguments);
 				return method.apply(scope, arguments);
 			};
-		}
+		};
 
 		for (var methodName in methods) {
 			var method = methods[methodName];
@@ -112,7 +112,7 @@
 
 	Context.prototype.getCalls = function() {
 		return this._calls;
-	}
+	};
 
 	Context.prototype.resetCalls = function() {
 		this._calls = [];
@@ -139,8 +139,7 @@
 				return { pass: result };
 			}
 		}
-	};
-
+	}
 	function toEqualOneOf() {
 		return {
 			compare: function(actual, expecteds) {

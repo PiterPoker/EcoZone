@@ -126,7 +126,7 @@ describe('Legend block tests', function() {
 			expect(chart.legend.legendHitBoxes[i].left).toBeCloseToPixel(expected.l);
 			expect(chart.legend.legendHitBoxes[i].top).toBeCloseToPixel(expected.t);
 			expect(chart.legend.legendHitBoxes[i].width).toBeCloseToPixel(expected.w);
-		})
+		});
 
 		// NOTE(SB) We should get ride of the following tests and use image diff instead.
 		// For now, as discussed with Evert Timberg, simply comment out.

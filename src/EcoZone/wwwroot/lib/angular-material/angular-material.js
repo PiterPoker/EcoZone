@@ -4390,8 +4390,8 @@ angular.module('material.core.meta', [])
           dimBackground: true
         }
       }
-    };
-  };
+    }
+  }
 })();
 
 })();
@@ -4429,8 +4429,8 @@ angular.module('material.core.meta', [])
         dimBackground: false,
         fitRipple: true
       }, options));
-    };
-  };
+    }
+  }
 })();
 
 })();
@@ -4469,8 +4469,8 @@ angular.module('material.core.meta', [])
         outline: false,
         rippleSize: 'full'
       }, options));
-    };
-  };
+    }
+  }
 })();
 
 })();
@@ -4977,8 +4977,8 @@ function attrNoDirective () {
         outline: false,
         rippleSize: 'full'
       }, options));
-    };
-  };
+    }
+  }
 })();
 
 })();
@@ -6899,7 +6899,7 @@ if (angular.version.minor >= 4) {
 
       function computeTimings(element) {
         var node = getDomNode(element);
-        var cs = $window.getComputedStyle(node)
+        var cs = $window.getComputedStyle(node);
         var tdr = parseMaxTime(cs[prop('transitionDuration')]);
         var adr = parseMaxTime(cs[prop('animationDuration')]);
         var tdy = parseMaxTime(cs[prop('transitionDelay')]);
@@ -30281,7 +30281,7 @@ function MenuProvider($$interimElementProvider) {
               }
               break;
             }
-          } while (target = target.parentNode)
+          } while (target = target.parentNode);
 
           function close() {
             scope.$apply(function() {
@@ -32947,4 +32947,5 @@ angular.module("material.core").constant("$MD_THEME_CSS", "md-autocomplete.md-TH
 })();
 
 
-})(window, window.angular);;window.ngMaterial={version:{full: "1.1.1"}};
+})(window, window.angular);
+window.ngMaterial = {version: {full: "1.1.1"}};

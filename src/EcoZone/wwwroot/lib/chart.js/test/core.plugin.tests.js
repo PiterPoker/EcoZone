@@ -81,7 +81,7 @@ describe('Chart.plugins', function() {
 
 		it('should return TRUE if no plugin explicitly returns FALSE', function() {
 			Chart.plugins.register({ check: function() {} });
-			Chart.plugins.register({ check: function() { return; } });
+			Chart.plugins.register({ check: function() {  } });
 			Chart.plugins.register({ check: function() { return null; } });
 			Chart.plugins.register({ check: function() { return 42 } });
 			var res = Chart.plugins.notify('check');
@@ -90,7 +90,7 @@ describe('Chart.plugins', function() {
 
 		it('should return FALSE if no plugin explicitly returns FALSE', function() {
 			Chart.plugins.register({ check: function() {} });
-			Chart.plugins.register({ check: function() { return; } });
+			Chart.plugins.register({ check: function() {  } });
 			Chart.plugins.register({ check: function() { return false; } });
 			Chart.plugins.register({ check: function() { return 42 } });
 			var res = Chart.plugins.notify('check');

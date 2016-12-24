@@ -96,7 +96,7 @@ describe('Doughnut controller tests', function() {
 				borderColor: 'rgb(0, 0, 255)',
 				borderWidth: 2
 			}));
-		})
+		});
 
 		chart.update();
 
@@ -118,7 +118,7 @@ describe('Doughnut controller tests', function() {
 				borderColor: 'rgb(0, 0, 255)',
 				borderWidth: 2
 			}));
-		})
+		});
 
 		// Change the amount of data and ensure that arcs are updated accordingly
 		chart.data.datasets[1].data = [1, 2]; // remove 2 elements from dataset 0

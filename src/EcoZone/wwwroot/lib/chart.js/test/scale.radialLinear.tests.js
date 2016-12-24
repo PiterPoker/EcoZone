@@ -426,7 +426,7 @@ describe('Test the radial linear scale', function() {
 
 		var radToNearestDegree = function(rad) {
 			return Math.round((360 * rad) / (2 * Math.PI));
-		}
+		};
 
 		var slice = 72; // (360 / 5)
 

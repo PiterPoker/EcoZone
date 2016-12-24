@@ -4322,8 +4322,8 @@ angular.module('material.core.meta', [])
           dimBackground: true
         }
       }
-    };
-  };
+    }
+  }
 })();
 
 (function() {
@@ -4357,8 +4357,8 @@ angular.module('material.core.meta', [])
         dimBackground: false,
         fitRipple: true
       }, options));
-    };
-  };
+    }
+  }
 })();
 
 (function() {
@@ -4393,8 +4393,8 @@ angular.module('material.core.meta', [])
         outline: false,
         rippleSize: 'full'
       }, options));
-    };
-  };
+    }
+  }
 })();
 
 /**
@@ -4893,8 +4893,8 @@ function attrNoDirective () {
         outline: false,
         rippleSize: 'full'
       }, options));
-    };
-  };
+    }
+  }
 })();
 
 angular.module('material.core.theming.palette', [])
@@ -6799,7 +6799,7 @@ if (angular.version.minor >= 4) {
 
       function computeTimings(element) {
         var node = getDomNode(element);
-        var cs = $window.getComputedStyle(node)
+        var cs = $window.getComputedStyle(node);
         var tdr = parseMaxTime(cs[prop('transitionDuration')]);
         var adr = parseMaxTime(cs[prop('animationDuration')]);
         var tdy = parseMaxTime(cs[prop('transitionDelay')]);

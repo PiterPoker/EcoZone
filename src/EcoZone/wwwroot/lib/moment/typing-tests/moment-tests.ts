@@ -187,7 +187,7 @@ var a8 = moment([2007, 0, 29]);
 var b8 = moment([2007, 0, 28]);
 a8.diff(b8) ;
 a8.diff(b8, 'days');
-a8.diff(b8, 'years')
+a8.diff(b8, 'years');
 a8.diff(b8, 'years', true);
 
 moment([2007, 0, 29]).toDate();
