@@ -13,6 +13,11 @@ namespace DataAccessProvider
 
         public DbSet<Block> Blocks { get; set; }
         public DbSet<Unit> Units { get; set; }
+        public DbSet<BlockType> BlockTypes { get; set; }
+        public DbSet<Comment> Comments { get; set; }
+        public DbSet<Like> Likes { get; set; }
+        public DbSet<Tag> Tags { get; set; }
+        public DbSet<UnitTags> UnitTagses { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder builder)
