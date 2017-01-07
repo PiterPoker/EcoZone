@@ -1,19 +1,17 @@
 ﻿app.controller('mainController', mainController);
 
-function mainController($scope, $mdDialog) {
+function mainController($scope, $mdDialog, $mdSidenav, authService, $state) {
     $scope.title = 'EcoZone';
     $scope.description = 'экологический портал';
 
     $scope.showSearchDialog = function (ev) {
         var confirm = $mdDialog.prompt()
-          .title('What would you name your dog?')
-          .textContent('Bowser is a common name.')
-          .placeholder('Dog name')
-          .ariaLabel('Dog name')
-          .initialValue('Buddy')
+          .title('Поиск')
+          .textContent('Введите текст или слово для поиска')
+          .placeholder('Поиск...')
           .targetEvent(ev)
-          .ok('Okay!')
-          .cancel('I\'m a cat person');
+          .ok('Поиск!')
+          .cancel('Отмена');
 
         $mdDialog.show(confirm).then(function (result) {
             $scope.status = 'You decided to name your dog ' + result + '.';
@@ -21,4 +19,29 @@ function mainController($scope, $mdDialog) {
             $scope.status = 'You didn\'t name your dog.';
         });
     };
+
+    $scope.toggleSideNav = toggleSideNav("sideNav");
+
+    function toggleSideNav() {
+        return function () {
+            $mdSidenav('sideNav')
+                .toggle();
+        };
+    }
+
+    $scope.close = function () {
+        $mdSidenav('sideNav').close();
+    };
+
+    $scope.logOut = function () {
+        $mdSidenav('sideNav').close();
+        authService.logOut();
+        $state.go("login");
+    };
+
+    $scope.authentication = authService.authentication;
+
+    $scope.$on("$stateChangeError", function () {
+        $state.go("login");
+    });
 }

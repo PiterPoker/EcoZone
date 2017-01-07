@@ -1,25 +1,29 @@
 <div class="menu-height"></div>
 
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-xs-12">
-            <section class="profile-section">
-                <div class="profile-info-block">
-                    <div class="cover" style="background-image: url(../images/)"></div>
-                    <h3 class="profile-name">John Doe</h3>
-                    <p>автор</p>
-                    <p>Avthor@avthor.com</p>
-                    <p>+375(29)321 6655</p>
-
-                    <div class="edit-profile-button">
-                        <a href="#" class="button button__vol dark">редактировать</a>
+<div class="row">
+    <div class="col-xs-12">
+        <section class="profile-section">
+            <div class="profile-info-block">
+                <md-card-title-media>
+                    <div class="cover" ng-if="image != null"
+                         style="background-image: url('{{image}}')"></div>
+                    <div class="cover" ng-if="image == null" flex layout="row"
+                         layout-align="center center">
                     </div>
-
-                    <!--<div class="profile-description">
-                        <p>john_doe@mail.com</p>
-                        <p>+375295567449</p>
-                    </div>-->
+                </md-card-title-media>
+                <div class="cover" style="background-image: url(../image/banner.jpg)"></div>
+                <h3 class="profile-name">John Doe</h3>
+                <p>автор</p>
+                <div class="edit-profile-button">
+                    <a href="#profile.html" class="button button__vol dark">редактировать</a>
                 </div>
+
+                <!--<div class="profile-description">
+                    <p>john_doe@mail.com</p>
+                    <p>+375295567449</p>
+                </div>-->
+            </div>
             </section>
         </div>
     </div>
@@ -29,7 +33,7 @@
             <div class="news-cards">
                 <div class="card">
                     <div class="card-header">
-                        <div class="card-image" style="background-image: url(../assets/img/titles/title-1.jpg)">
+                        <div class="card-image" style="background-image: url(../image/titles/title-1.jpg)">
                         </div>
                         <div class="statistic">
                             <div class="views">
@@ -60,7 +64,7 @@
 
                 <div class="card">
                     <div class="card-header">
-                        <div class="card-image" style="background-image: url(../assets/img/titles/title-2.jpg)">
+                        <div class="card-image" style="background-image: url(../image/titles/title-2.jpg)">
                         </div>
                         <div class="statistic">
                             <div class="views">
@@ -91,7 +95,7 @@
 
                 <div class="card">
                     <div class="card-header">
-                        <div class="card-image" style="background-image: url(../assets/img/titles/title-3.jpg)">
+                        <div class="card-image" style="background-image: url(../image/titles/title-3.jpg)">
                         </div>
                         <div class="statistic">
                             <div class="views">
@@ -122,7 +126,7 @@
 
                 <div class="card">
                     <div class="card-header">
-                        <div class="card-image" style="background-image: url(../assets/img/titles/title-4.jpg)">
+                        <div class="card-image" style="background-image: url(../image/titles/title-4.jpg)">
                         </div>
                         <div class="statistic">
                             <div class="views">
@@ -153,7 +157,7 @@
 
                 <div class="card">
                     <div class="card-header">
-                        <div class="card-image" style="background-image: url(../assets/img/titles/title-5.jpg)">
+                        <div class="card-image" style="background-image: url(../image/titles/title-5.jpg)">
                         </div>
                         <div class="statistic">
                             <div class="views">
@@ -184,7 +188,7 @@
 
                 <div class="card">
                     <div class="card-header">
-                        <div class="card-image" style="background-image: url(../assets/img/titles/title-6.jpg)">
+                        <div class="card-image" style="background-image: url(../image/titles/title-6.jpg)">
                         </div>
                         <div class="statistic">
                             <div class="views">
@@ -217,7 +221,7 @@
 
                 <div class="card">
                     <div class="card-header">
-                        <div class="card-image" style="background-image: url(../assets/img/titles/title-1.jpg)">
+                        <div class="card-image" style="background-image: url(../image/titles/title-1.jpg)">
                         </div>
                         <div class="statistic">
                             <div class="views">
@@ -250,7 +254,7 @@
 
                 <div class="card">
                     <div class="card-header">
-                        <div class="card-image" style="background-image: url(../assets/img/titles/title-2.jpg)">
+                        <div class="card-image" style="background-image: url(../image/titles/title-2.jpg)">
                         </div>
                         <div class="statistic">
                             <div class="views">
@@ -277,7 +281,7 @@
                             tempora, tempore vel voluptas.</p>
                     </div>
                     <div class="card-action">
-                        <a href="article.html" class="action">подробнее</a>
+                        <a href="#article.html" class="action">подробнее</a>
                     </div>
                 </div>
             </div>

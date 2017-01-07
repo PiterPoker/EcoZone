@@ -8,5 +8,6 @@ var app = angular.module('ecoZone',
     "ngResource",
     "ui.router",
     "ngCookies",
-    "ngProgress"
+    "ngProgress",
+    "ngMessages"
 ]);

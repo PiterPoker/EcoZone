@@ -1,0 +1,33 @@
+<div class="menu-height"></div>
+<div flex layout="row" layout-align="center center">
+    <form novalidate class="create-article-form" name="loginForm" ng-submit="login()">
+        <div class="head">
+            <h2>{{title}}</h2>
+        </div>
+        <md-input-container class="md-block">
+            <label>email</label>
+            <input type="text" ng-model="loginData.email" required ng-pattern="validation.email">
+            <div ng-messages="registration.email.$error">
+                <div ng-message="required">Введите email</div>
+            </div>
+        </md-input-container>
+
+        <md-input-container class="md-block" flex-gt-sm>
+            <label>пароль</label>
+            <input type="password" ng-model="loginData.password" required minlength="6">
+            <div ng-messages="registration.password.$error">
+                <div ng-message="required">Введите пароль</div>
+                <div ng-message="minlength">Коротко! Должен содержать минимум 6 символов</div>
+            </div>
+        </md-input-container>
+        <div layout="row" layout-align="end none">
+            <button class="button" type="submit">
+                <md-progress-circular ng-disabled="!activeLoader" ng-show="activeLoader" md-mode="indeterminate" md-diameter="18px"></md-progress-circular>
+                {{title}}
+            </button>
+        </div>
+            <p class="md-body-1">
+                <a ui-sref="signup">Зарегистрироваться</a>, если еще нет аккаунта.
+            </p>
+</form>
+</div>

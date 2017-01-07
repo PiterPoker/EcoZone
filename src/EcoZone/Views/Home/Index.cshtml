@@ -10,7 +10,7 @@
 
     <environment names="Development,Staging,Production">
         <link rel="stylesheet" href="~/lib/normalize-css/normalize.css"/>
-        <link href="~/lib/angular-material/angular-material.css" rel="stylesheet" />
+        <link href="~/lib/angular-material/angular-material.css" rel="stylesheet"/>
         <link href="~/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet"/>
         <link rel="stylesheet" href="~/lib/ngprogress/ngProgress.css"/>
         <link rel="stylesheet" href="~/css/main.min.css"/>
@@ -32,46 +32,97 @@
     <script src="~/lib/angular-material/angular-material.min.js"></script>
     <script src="~/js/site.min.js"></script>
 </environment>
-<nav>
-    <div class="container-fluid">
-        <div>
-            <div>
-                <a><i class="fa fa-bars"></i></a>
-                <!-- todo apply sidenav-->
-                <div class="mobile-navigation">
-                    <i class="fa fa-close"></i>
-                    <h2>Меню</h2>
-                    <ul>
-                        <li><a ui-sref="main">Главная</a></li>
-                        <li><a ui-sref="news">Новости</a></li>
-                        <li><a ui-sref="history">История</a></li>
-                        <!-- todo create about state-->
-                        <li><a ui-sref="about">О проекте</a></li>
-                        <li>
-                            <form>
-                                <div class="input-field">
-                                    <input type="text" title="поиск" class="has-icon">
-                                    <label></label>
-                                    <i class="fa fa-search icon"></i>
-                                </div>
-                            </form>
-                        </li>
-                    </ul>
-                </div>
-                <ul class="navigation">
-                    <li><a ui-sref="main">Главная</a></li>
-                    <li><a ui-sref="news">Новости</a></li>
-                    <li><a ui-sref="history">История</a></li>
-                    <li><a ui-sref="about">О проекте</a></li>
-                    <li>
-                        <a href="" ng-click="showSearchDialog($event)">Поиск</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</nav>
 
+<md-toolbar class="nav">
+    <div class="md-toolbar-tools">
+        <md-button class="md-icon-button" hide-gt-sm ng-click="toggleSideNav()" aria-label="toggle sidenav">
+            <i class="fa fa-bars"></i>
+        </md-button>
+        <md-list-item ng-click="close()" ui-sref="news">
+            <div class="md-list-item-text" layout="column" flex>
+                <h2>
+                    <span>{{title}}</span>
+                </h2>
+            </div>
+        </md-list-item>
+        <md-list-item hide-xs hide-sm ng-click="close()" ui-sref="profile">
+            <div class="md-list-item-text" layout="column" flex>
+                <p>Профиль</p>
+            </div>
+        </md-list-item>
+        <md-list-item hide-xs hide-sm ng-click="close()" ui-sref="news">
+            <div class="md-list-item-text" layout="column" flex>
+                <p>Новости</p>
+            </div>
+        </md-list-item>
+        <md-list-item hide-xs hide-sm ng-click="close()" ui-sref="history">
+            <div class="md-list-item-text" layout="column" flex>
+                <p>История</p>
+            </div>
+        </md-list-item>
+        <md-list-item hide-xs hide-sm ng-click="close()" ui-sref="about">
+            <div class="md-list-item-text" layout="column" flex>
+                <p>О проекте</p>
+            </div>
+        </md-list-item>
+        <md-list-item hide-xs hide-sm ng-click="showSearchDialog($event)">
+            <div class="md-list-item-text" layout="column" flex>
+                <p>Поиск</p>
+            </div>
+        </md-list-item>
+        <md-list-item hide-xs hide-sm ng-click="logOut()" ng-show="authentication.isAuth">
+            <div class="md-list-item-text" layout="column" flex>
+                <p>Выход</p>
+            </div>
+        </md-list-item>
+    </div>
+</md-toolbar>
+<section id="main-container" layout="row" flex hide-gt-sm>
+    <md-sidenav class="md-sidenav-left dl-sidenav nav" md-component-id="sideNav">
+        <md-toolbar class="md-toolbar-tools">
+            <h1 class="md-menu-backdrop navigation">{{title}}</h1>
+        </md-toolbar>
+        <md-content>
+            <md-list flex>
+                <md-list-item ng-click="close()" ui-sref="profile({profileId: authentication.id})">
+                    <div class="md-list-item-text" layout="column" flex>
+                        <p>Профиль</p>
+                    </div>
+                </md-list-item>
+                <md-list-item ng-click="close()" ui-sref="news">
+                    <div class="md-list-item-text" layout="column" flex>
+                        <p>Новости</p>
+                    </div>
+                </md-list-item>
+                <md-list-item ng-click="close()" ui-sref="history">
+                    <div class="md-list-item-text" layout="column" flex>
+                        <p>История</p>
+                    </div>
+                </md-list-item>
+                <md-divider></md-divider>
+                <md-list-item ng-click="close()" ng-show="authentication.isAuth" ui-sref="settings">
+                    <md-icon class="fa fa-gears"></md-icon>
+                    <div class="md-list-item-text" layout="column" flex>
+                        <p>Настройки</p>
+                    </div>
+                </md-list-item>
+                <md-list-item ng-click="logOut()" ng-show="authentication.isAuth">
+                    <md-icon class="fa fa-sign-out"></md-icon>
+                    <div class="md-list-item-text" layout="column" flex>
+                        <p>Выход</p>
+                    </div>
+                </md-list-item>
+                <md-divider></md-divider>
+                <md-list-item ng-click="close()" ui-sref="help">
+                    <md-icon class="fa fa-question-circle"></md-icon>
+                    <div class="md-list-item-text" layout="column" flex>
+                        <p>Помощь</p>
+                    </div>
+                </md-list-item>
+            </md-list>
+        </md-content>
+    </md-sidenav>
+</section>
 <div ui-view=""></div>
 </body>
 </html>

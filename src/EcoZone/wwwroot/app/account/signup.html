@@ -1,0 +1,50 @@
+<div class="menu-height"></div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+            <form class="create-article-form" name="signUpForm" ng-submit="signUp()">
+
+                <div class="head">
+                    <h2>{{title}}</h2>
+                </div>
+                <div class="input-field">
+                    <div ng-messages="registration.firstName.$error">
+                        <div ng-message="required">Введите фамилию</div>
+                    </div>
+                    <input type="text" ng-model="registration.firstName" required>
+                </div>
+                <div class="input-field">
+                    <div ng-messages="registration.lastName.$error">
+                        <div ng-message="required">Введите имя</div>
+                    </div>
+                    <input type="text" ng-model="registration.lastName" required>
+                </div>
+                <div class="input-field">
+                    <div ng-messages="registration.email.$error">
+                        <div ng-message="required">Введите email</div>
+                    </div>
+                    <input type="email" ng-model="registration.email" required ng-pattern="validation.email">
+                </div>
+                <div class="input-field">
+                    <div ng-messages="registration.password.$error">
+                        <div ng-message="required">Введите пароль</div>
+                    </div>
+                    <input type="password" ng-model="registration.password" required minlength="6">
+                </div>
+                <div class="input-field">
+                    <div ng-messages="registration.confirmPassword.$error">
+                        <div ng-message="required">Введите подтверждение пароля</div>
+                    </div>
+                    <input type="password" ng-model="registration.confirmPassword" required minlength="6">
+                </div>
+                <button class="button" type="submit">
+                    <md-progress-circular ng-disabled="!activeLoader" ng-show="activeLoader" md-mode="indeterminate" md-diameter="18px"></md-progress-circular>
+                    {{title}}
+                </button>
+                <p class="md-body-1">
+                    <a ui-sref="login">Войти</a>, если уже есть аккаунт.
+                </p>
+            </form>
+        </div>
+    </div>
+</div>

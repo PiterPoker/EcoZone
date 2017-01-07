@@ -1,6 +1,7 @@
 ﻿/// <autosync enabled="true" />
 /// <reference path="../gulpfile.js" />
 /// <reference path="js/app.js" />
+/// <reference path="js/components/modals/ProfileImageLoaderController.js" />
 /// <reference path="js/controllers/aboutcontroller.js" />
 /// <reference path="js/controllers/historyController.js" />
 /// <reference path="js/controllers/loginController.js" />

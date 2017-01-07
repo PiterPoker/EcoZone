@@ -1,17 +1,13 @@
 app.factory("newsService", newsService);
 
 function newsService($http) {
-    var news = [];
     return {
         getNews: function (callback) {
-            $http.get("/api/news")
-                .success(function (data) {
-                    news = data;
-                    callback(data);
-                })
-                .error(function () {
-                    console.error("Problem with getting news from the server");
-                });
+            $http.get("/api/news").then(function successCallback(response) {
+                callback(response.data);
+            }, function errorCallback(error) {
+                console.error("Problem with getting news from the server" + error);
+            });
         }
     };
 }
