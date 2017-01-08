@@ -77,10 +77,10 @@
     ]
   },
     "scripts": {
-      "prepublish": [ "bower install", "dotnet bundle" ],
       "postpublish": [
         "dotnet publish-iis --publish-folder %publish:OutputPath% --framework %publish:FullTargetFramework%"
-      ]
+      ],
+      "prepublish": [ "bower install", "dotnet bundle" ]
     },
     "Microsoft.AspNetCore.Authentication.Cookies": "1.1.0",
     "Microsoft.AspNetCore.Authentication.JwtBearer": "1.1.0",
