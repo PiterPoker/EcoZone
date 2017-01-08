@@ -1,9 +1,6 @@
 ﻿using System.Collections.Generic;
-using System.Threading.Tasks;
 using DataAccessProvider;
-using Domain.Model;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace EcoZone.Controllers
 {
@@ -19,9 +16,25 @@ namespace EcoZone.Controllers
 
         [Route("")]
         [HttpGet]
-        public async Task<List<Unit>> Get()
+        public List<object> Get()
         {
-            return await _context.Units.ToListAsync();
+            var list = new List<object>();
+            list.Add(new
+            {
+                Title = "News 1",
+                Description = "Description"
+            });
+            list.Add(new
+            {
+                Title = "News 2",
+                Description = "Description"
+            });
+            list.Add(new
+            {
+                Title = "News 3",
+                Description = "Description"
+            });
+            return list;
         }
     }
 }

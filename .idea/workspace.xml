@@ -2,19 +2,56 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f22aafbb-2173-46f4-9da7-679a791249e8" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/EcoZone/wwwroot/app/navigation.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/EcoZone/wwwroot/js/controllers/navigationController.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/EcoZone/wwwroot/scss/parts/_customized-grid.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/EcoZone/wwwroot/scss/tools/_fonts.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/EcoZone/wwwroot/scss/tools/_grid.scss" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DataAccessProvider/DomainModelContext.cs" afterPath="$PROJECT_DIR$/src/DataAccessProvider/DomainModelContext.cs" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/EcoZone/Controllers/AccountController.cs" afterPath="$PROJECT_DIR$/src/EcoZone/Controllers/AccountController.cs" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/EcoZone/Controllers/NewsController.cs" afterPath="$PROJECT_DIR$/src/EcoZone/Controllers/NewsController.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/EcoZone/Views/Home/Index.cshtml" afterPath="$PROJECT_DIR$/src/EcoZone/Views/Home/Index.cshtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/EcoZone/wwwroot/_references.js" afterPath="$PROJECT_DIR$/src/EcoZone/wwwroot/_references.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/EcoZone/wwwroot/app/account/login.html" afterPath="$PROJECT_DIR$/src/EcoZone/wwwroot/app/account/login.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/EcoZone/wwwroot/app/account/signup.html" afterPath="$PROJECT_DIR$/src/EcoZone/wwwroot/app/account/signup.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/EcoZone/wwwroot/app/news.html" afterPath="$PROJECT_DIR$/src/EcoZone/wwwroot/app/news.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/EcoZone/wwwroot/app/profile.html" afterPath="$PROJECT_DIR$/src/EcoZone/wwwroot/app/profile.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/EcoZone/wwwroot/app/users.html" afterPath="$PROJECT_DIR$/src/EcoZone/wwwroot/app/users.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/EcoZone/wwwroot/css/main.css" afterPath="$PROJECT_DIR$/src/EcoZone/wwwroot/css/main.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/EcoZone/wwwroot/css/main.min.css" afterPath="$PROJECT_DIR$/src/EcoZone/wwwroot/css/main.min.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/EcoZone/wwwroot/js/app.js" afterPath="$PROJECT_DIR$/src/EcoZone/wwwroot/js/app.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/EcoZone/wwwroot/js/controllers/loginController.js" afterPath="$PROJECT_DIR$/src/EcoZone/wwwroot/js/controllers/loginController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/EcoZone/wwwroot/js/controllers/mainController.js" afterPath="$PROJECT_DIR$/src/EcoZone/wwwroot/js/controllers/mainController.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/EcoZone/wwwroot/js/controllers/profileController.js" afterPath="$PROJECT_DIR$/src/EcoZone/wwwroot/js/controllers/profileController.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/EcoZone/wwwroot/js/controllers/signupController.js" afterPath="$PROJECT_DIR$/src/EcoZone/wwwroot/js/controllers/signupController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/EcoZone/wwwroot/js/route.js" afterPath="$PROJECT_DIR$/src/EcoZone/wwwroot/js/route.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/EcoZone/wwwroot/js/run.js" afterPath="$PROJECT_DIR$/src/EcoZone/wwwroot/js/run.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/EcoZone/wwwroot/js/services/newsService.js" afterPath="$PROJECT_DIR$/src/EcoZone/wwwroot/js/services/newsService.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/EcoZone/wwwroot/js/site.min.js" afterPath="$PROJECT_DIR$/src/EcoZone/wwwroot/js/site.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/EcoZone/wwwroot/lib/angular-material/angular-material-mocks.js" afterPath="$PROJECT_DIR$/src/EcoZone/wwwroot/lib/angular-material/angular-material-mocks.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/EcoZone/wwwroot/lib/angular-material/angular-material.js" afterPath="$PROJECT_DIR$/src/EcoZone/wwwroot/lib/angular-material/angular-material.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/EcoZone/wwwroot/lib/angular-material/modules/closure/core/core.js" afterPath="$PROJECT_DIR$/src/EcoZone/wwwroot/lib/angular-material/modules/closure/core/core.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/EcoZone/wwwroot/lib/angular-material/modules/closure/menu/menu.js" afterPath="$PROJECT_DIR$/src/EcoZone/wwwroot/lib/angular-material/modules/closure/menu/menu.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/EcoZone/wwwroot/lib/angular-material/modules/js/core/core.js" afterPath="$PROJECT_DIR$/src/EcoZone/wwwroot/lib/angular-material/modules/js/core/core.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/EcoZone/wwwroot/lib/angular-material/modules/js/menu/menu.js" afterPath="$PROJECT_DIR$/src/EcoZone/wwwroot/lib/angular-material/modules/js/menu/menu.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/EcoZone/wwwroot/lib/chart.js/samples/scatter.html" afterPath="$PROJECT_DIR$/src/EcoZone/wwwroot/lib/chart.js/samples/scatter.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/EcoZone/wwwroot/lib/chart.js/test/controller.doughnut.tests.js" afterPath="$PROJECT_DIR$/src/EcoZone/wwwroot/lib/chart.js/test/controller.doughnut.tests.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/EcoZone/wwwroot/lib/chart.js/test/core.element.tests.js" afterPath="$PROJECT_DIR$/src/EcoZone/wwwroot/lib/chart.js/test/core.element.tests.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/EcoZone/wwwroot/lib/chart.js/test/core.legend.tests.js" afterPath="$PROJECT_DIR$/src/EcoZone/wwwroot/lib/chart.js/test/core.legend.tests.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/EcoZone/wwwroot/lib/chart.js/test/core.plugin.tests.js" afterPath="$PROJECT_DIR$/src/EcoZone/wwwroot/lib/chart.js/test/core.plugin.tests.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/EcoZone/wwwroot/lib/chart.js/test/mockContext.js" afterPath="$PROJECT_DIR$/src/EcoZone/wwwroot/lib/chart.js/test/mockContext.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/EcoZone/wwwroot/lib/chart.js/test/scale.radialLinear.tests.js" afterPath="$PROJECT_DIR$/src/EcoZone/wwwroot/lib/chart.js/test/scale.radialLinear.tests.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/EcoZone/wwwroot/lib/chart.js/test/scale.time.tests.js" afterPath="$PROJECT_DIR$/src/EcoZone/wwwroot/lib/chart.js/test/scale.time.tests.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/EcoZone/wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js" afterPath="$PROJECT_DIR$/src/EcoZone/wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/EcoZone/wwwroot/lib/jquery-validation/dist/jquery.validate.js" afterPath="$PROJECT_DIR$/src/EcoZone/wwwroot/lib/jquery-validation/dist/jquery.validate.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/EcoZone/wwwroot/lib/jquery-validation/src/core.js" afterPath="$PROJECT_DIR$/src/EcoZone/wwwroot/lib/jquery-validation/src/core.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/EcoZone/wwwroot/lib/moment/min/moment-with-locales.js" afterPath="$PROJECT_DIR$/src/EcoZone/wwwroot/lib/moment/min/moment-with-locales.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/EcoZone/wwwroot/lib/moment/src/lib/moment/from.js" afterPath="$PROJECT_DIR$/src/EcoZone/wwwroot/lib/moment/src/lib/moment/from.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/EcoZone/wwwroot/lib/moment/typing-tests/moment-tests.ts" afterPath="$PROJECT_DIR$/src/EcoZone/wwwroot/lib/moment/typing-tests/moment-tests.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/EcoZone/wwwroot/scss/tools/_tools.scss" afterPath="$PROJECT_DIR$/src/EcoZone/wwwroot/scss/tools/_tools.scss" />
     </list>
     <ignored path="EcoZone.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -36,7 +73,7 @@
     <favorites_list name="EcoZone" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -165,8 +202,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -397,13 +434,12 @@
       <workItem from="1481465339798" duration="7017000" />
       <workItem from="1482605268986" duration="174000" />
       <workItem from="1482605467447" duration="527000" />
-      <workItem from="1482606270226" duration="636000" />
-      <workItem from="1482607045309" duration="15000" />
+      <workItem from="1482606270226" duration="75000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16756000" />
+    <option name="totallyTimeSpent" value="16180000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
