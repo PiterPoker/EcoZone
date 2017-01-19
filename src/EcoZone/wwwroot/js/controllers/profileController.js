@@ -1,17 +1,18 @@
 app.controller("profileController", profileController);
 
-function profileController($scope, $state, $stateParams, authService, profileService, $mdDialog, $mdToast) {
+function profileController($scope, $state, $stateParams, $mdToast, $mdDialog, profileService, authService) {
     $scope.profile = {};
     $scope.image = null;
-    var profileId = $stateParams.profileId;
+    $scope.firstname = [];
+    $scope.lastname = [];
+    $scope.role = [];
+
+    var profileId = $stateParams.id;
 
     profileService.getProfile(profileId, function (data) {
         if (data != "Пльзователь не найден.") {
             $scope.profile = data;
             $scope.image = data.photo == null ? null : "data/profile_photos/" + data.photo;
-        } else {
-            $state.go("Admin");
-            $mdToast.show($mdToast.simple().textContent(data).position('bottom right').hideDelay(3000));
         }
     });
 
@@ -26,6 +27,16 @@ function profileController($scope, $state, $stateParams, authService, profileSer
             case "Moderator":
                 return "Модератор";
         }
+    };
+
+    $scope.isInRole = function (role) {
+        var isInRole = false;
+        angular.forEach($scope.profile, function (userRole) {
+            if (userRole == role) {
+                isInRole = true;
+            }
+        });
+        return isInRole;
     };
 
     $scope.isCurrent = function () {
@@ -53,7 +64,12 @@ function profileController($scope, $state, $stateParams, authService, profileSer
         return isUser;
     };
 
+    $scope.getRole = function (role) {
+        return authService.getRole(role);
+    };
+
     $scope.showProfileImageModal = function (ev) {
+        if (!$scope.isCurrent) return;
         $mdDialog.show({
             controller: 'ProfileImageLoaderController',
             templateUrl: '../app/partials/profileImageLoaderView.html',
@@ -64,6 +80,8 @@ function profileController($scope, $state, $stateParams, authService, profileSer
         }).then(
             function (response) {
                 $scope.image = response;
+            },
+            function (response) {
             });
     };
 }

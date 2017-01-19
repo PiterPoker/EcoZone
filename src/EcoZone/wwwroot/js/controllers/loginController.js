@@ -23,7 +23,7 @@ function loginController($scope, $state, authService) {
                     if (result == "OK") {
                         $scope.message = "Вход прошел успешно.";
                         $scope.activeLoader = false;
-                        $state.go("profile", {profileId: authService.authentication.id});
+                        $state.go("profile", {id: authService.authentication.id});
                     } else {
                         $scope.activeLoader = false;
                     }

@@ -31,5 +31,8 @@ namespace EcoZone.Models.AccountViewModels
 
         public byte[] Photo { get; set; }
         public string PhotoType { get; set; }
+        
+        [Required]
+        public int Type { get; set; }
     }
 }

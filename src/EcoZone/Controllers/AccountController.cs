@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using DataAccessProvider;
 using Domain.Model;
 using EcoZone.Models.AccountViewModels;
 using EcoZone.Services;
@@ -13,8 +14,10 @@ using Microsoft.Extensions.Logging;
 namespace EcoZone.Controllers
 {
     [Authorize]
+    [Route("api/account")]
     public class AccountController : Controller
     {
+        private readonly DomainModelContext _context;
         private readonly IEmailSender _emailSender;
         private readonly ILogger _logger;
         private readonly SignInManager<ApplicationUser> _signInManager;
@@ -25,82 +28,55 @@ namespace EcoZone.Controllers
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
             IEmailSender emailSender,
-            ISmsSender smsSender,
-            ILoggerFactory loggerFactory)
+            ISmsSender smsSender, 
+            ILoggerFactory loggerFactory,
+            DomainModelContext context)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _emailSender = emailSender;
             _smsSender = smsSender;
             _logger = loggerFactory.CreateLogger<AccountController>();
+            _context = context;        
         }
 
         //
         // GET: /Account/Login
-        [HttpGet]
+        [HttpPost("login")]
         [AllowAnonymous]
-        public IActionResult Login(string returnUrl = null)
+        public async Task<object> Login([FromBody] LoginViewModel model)
         {
-            ViewData["ReturnUrl"] = returnUrl;
-            return View();
+            if (!ModelState.IsValid)
+                return "Неверные данные.";
+            var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, true, false);
+            if (!result.Succeeded) return "При входе произошла ошибка.";
+            _logger.LogInformation(1, "User logged in.");
+            var user = await _userManager.FindByEmailAsync(model.Email);
+            return new
+            {
+                id = user.Id,
+                lastname = user.LastName,
+                firstname = user.FirstName,
+                email = user.Email,
+                roles = await _userManager.GetRolesAsync(user)
+            };
         }
 
-        //
-        // POST: /Account/Login
-        [HttpPost]
+        [HttpPost("register")]
         [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = null)
+        public async Task<object> Register([FromBody] RegisterViewModel model)
         {
-            ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {
-                // This doesn't count login failures towards account lockout
-                // To enable password failures to trigger account lockout, set lockoutOnFailure: true
-                var result =
-                    await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
-                if (result.Succeeded)
+                var user = new ApplicationUser
                 {
-                    _logger.LogInformation(1, "User logged in.");
-                    return RedirectToLocal(returnUrl);
-                }
-                if (result.RequiresTwoFactor)
-                    return RedirectToAction(nameof(SendCode), new {ReturnUrl = returnUrl, model.RememberMe});
-                if (result.IsLockedOut)
-                {
-                    _logger.LogWarning(2, "User account locked out.");
-                    return View("Lockout");
-                }
-                ModelState.AddModelError(string.Empty, "Invalid login attempt.");
-                return View(model);
-            }
-
-            // If we got this far, something failed, redisplay form
-            return View(model);
-        }
-
-        //
-        // GET: /Account/Register
-        [HttpGet]
-        [AllowAnonymous]
-        public IActionResult Register(string returnUrl = null)
-        {
-            ViewData["ReturnUrl"] = returnUrl;
-            return View();
-        }
-
-        //
-        // POST: /Account/Register
-        [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Register(RegisterViewModel model, string returnUrl = null)
-        {
-            ViewData["ReturnUrl"] = returnUrl;
-            if (ModelState.IsValid)
-            {
-                var user = new ApplicationUser {UserName = model.Email, Email = model.Email};
+                    UserName = model.Email,
+                    Email = model.Email,
+                    FirstName = model.FirstName,
+                    LastName = model.LastName
+                };
                 var result = await _userManager.CreateAsync(user, model.Password);
+                await _userManager.AddToRoleAsync(user, "User");
                 if (result.Succeeded)
                 {
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=532713
@@ -111,7 +87,7 @@ namespace EcoZone.Controllers
                     //    $"Please confirm your account by clicking this link: <a href='{callbackUrl}'>link</a>");
                     await _signInManager.SignInAsync(user, false);
                     _logger.LogInformation(3, "User created a new account with password.");
-                    return RedirectToLocal(returnUrl);
+                    return RedirectToLocal("K");
                 }
                 AddErrors(result);
             }
@@ -122,13 +98,11 @@ namespace EcoZone.Controllers
 
         //
         // POST: /Account/LogOff
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> LogOff()
+        [HttpPost("logout")]
+        public async Task LogOff()
         {
             await _signInManager.SignOutAsync();
             _logger.LogInformation(4, "User logged out.");
-            return RedirectToAction(nameof(HomeController.Index), "Home");
         }
 
         //
@@ -205,8 +179,7 @@ namespace EcoZone.Controllers
                 }
                 AddErrors(result);
             }
-
-            ViewData["ReturnUrl"] = returnUrl;
+            
             return View(model);
         }
 

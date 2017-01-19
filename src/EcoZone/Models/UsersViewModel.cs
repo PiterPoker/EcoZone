@@ -14,7 +14,7 @@ namespace EcoZone.Models
             Id = user.Id;
             FirstName = user.FirstName;
             LastName = user.LastName;
-            Photo = user.PhotoType;
+            Photo = user.PhotoPath;
             Roles = roles;
         }
 
