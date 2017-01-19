@@ -1,7 +1,13 @@
-using Domain.Model;
+using System;
+using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
+using DataAccessProvider;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace EcoZone.Controllers
 {
@@ -9,11 +15,51 @@ namespace EcoZone.Controllers
     [Route("api/image")]
     public class ImageController : Controller
     {
-        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly DomainModelContext _context;
+        private readonly IHostingEnvironment _hostingEnvironment;
 
-        public ImageController(UserManager<ApplicationUser> userManager)
+        public ImageController(DomainModelContext context, IHostingEnvironment hostingEnvironment)
         {
-            _userManager = userManager;
+            _context = context;
+            _hostingEnvironment = hostingEnvironment;
+        }
+
+        [HttpPost("UploadProfileImage")]
+        public async Task<string> UploadProfileImage(IFormFile file)
+        {
+            if (file == null || file.Length <= 0) return "Error";
+            var user =
+                await _context.Users.FirstOrDefaultAsync(u => u.IsApproved && u.UserName.Equals(User.Identity.Name));
+            if (user == null) return "Not found";
+            var path = Path.Combine(_hostingEnvironment.WebRootPath,
+                "data" + Path.DirectorySeparatorChar + "profile_photos");
+            try
+            {
+                RemoveExsitingImages(user.Id, path);
+                var fileExtention = file.ContentType.Substring(file.ContentType.LastIndexOf('/') + 1);
+                if (!fileExtention.Equals("jpeg") && !fileExtention.Equals("jpg") && !fileExtention.Equals("png"))
+                    return "Invalid file extension";
+                var filename = user.Id + '.' + fileExtention;
+                using (var fileStream = new FileStream(Path.Combine(path, filename), FileMode.Create))
+                {
+                    await file.CopyToAsync(fileStream);
+                }
+                user.PhotoPath = filename;
+                _context.ChangeTracker.DetectChanges();
+                await _context.SaveChangesAsync();
+                return "Uploaded";
+            }
+            catch (Exception)
+            {
+                return "Error";
+            }
+        }
+
+        private void RemoveExsitingImages(string name, string path)
+        {
+            var exsistingFiles = Directory.GetFiles(path, name + ".*");
+            foreach (var exsistingFile in exsistingFiles)
+                System.IO.File.Delete(exsistingFile);
         }
     }
 }
