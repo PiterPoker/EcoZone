@@ -60,6 +60,11 @@
                 <p>История</p>
             </div>
         </md-list-item>
+        <md-list-item hide-xs hide-sm ng-click="close()" ui-sref="createarticle" ng-show="authentication.isAuth">
+            <div class="md-list-item-text" layout="column" flex>
+                <p>Создание статьи</p>
+            </div>
+        </md-list-item>
         <md-list-item hide-xs hide-sm ng-click="close()" ui-sref="about">
             <div class="md-list-item-text" layout="column" flex>
                 <p>О проекте</p>
@@ -92,6 +97,11 @@
                 <md-list-item ng-click="close()" ui-sref="news">
                     <div class="md-list-item-text" layout="column" flex>
                         <p>Новости</p>
+                    </div>
+                </md-list-item>
+                <md-list-item ng-click="close()" ui-sref="createarticle" ng-show="authentication.isAuth" >
+                    <div class="md-list-item-text" layout="column" flex>
+                        <p>Создание статьи</p>
                     </div>
                 </md-list-item>
                 <md-list-item ng-click="close()" ui-sref="history">
