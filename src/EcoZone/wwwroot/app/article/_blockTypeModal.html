@@ -1,0 +1,29 @@
+<md-dialog aria-label="Mango (Fruit)">
+    <form ng-cloak>
+        <md-dialog-content>
+            <div class="md-dialog-content">
+                <h2>Тип блока</h2>
+                <br/>
+                <p>
+                    Выберите тип блока.
+                </p>
+                <br>
+                <md-radio-group ng-model="selectedBlockIndex">
+                    <md-radio-button ng-repeat="blockType in blockTypes" value="{{$index}}" class="md-primary">
+                        <span ng-bind-html="blockType.icon"></span>
+                    </md-radio-button>
+                </md-radio-group>
+            </div>
+        </md-dialog-content>
+
+        <md-dialog-actions layout="row">
+            <span flex></span>
+            <md-button ng-click="answer('not useful')">
+                Отмена
+            </md-button>
+            <md-button ng-click="answer('useful')">
+                Выбрать
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

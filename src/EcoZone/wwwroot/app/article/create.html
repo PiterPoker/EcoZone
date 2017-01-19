@@ -1,0 +1,123 @@
+﻿<div class="menu-height"></div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div layout="row" layout-wrap layout-margin layout-align="center">
+            <form action="" class="create-article-form">
+                <div class="head">
+                    <h2>{{title}}</h2>
+                </div>
+                <div class="input-field">
+                    <input name="name" type="text" placeholder="Название">
+                    <label></label>
+                </div>
+                <div class="file-field">
+                    <input type="file" id="article-cover" onchange="$('#cover-path').text($(this).val())">
+                    <label for="article-cover" class="button">Обложка статьи</label>
+                    <span id="cover-path"></span>
+                </div>
+                <div class="input-field">
+                    <md-input-container class="md-block dl-select" flex-gt-sm>
+                        <label>Тэги</label>
+                        <md-select ng-model="registration.disciplines"
+                                   md-on-close="clearSearchTerm()"
+                                   data-md-container-class="dl-select-header"
+                                   multiple>
+                            <!--<md-select-header class="dl-select-header">
+                                <input ng-model="searchTerm"
+                                       type="search"
+                                       placeholder="Поиск..."
+                                       class="input-field">
+                            </md-select-header>-->
+                            <md-optgroup>
+                                <md-option ng-value="tag.id"
+                                           ng-repeat="tag in tags | filter:searchTerm">
+                                    {{tag.name}}
+                                </md-option>
+                            </md-optgroup>
+                        </md-select>
+                    </md-input-container>
+                </div>
+                <div class="article-blocks">
+                    <a class="button" ng-click="showAddBlockModal($event)">добавить блок</a>
+                    <ul class="sortable">
+                        <li ng-repeat="block in article.blocks">
+                            <div class="input-field" ng-if="block.blockType == 0">
+                                <textarea placeholder="Текст"></textarea>
+                                <label></label>
+                            </div>
+
+                            <div class="input-field" ng-if="block.blockType == 1">
+                                <input type="text" placeholder="Ссылка на видео (Youtube)">
+                                <label></label>
+                            </div>
+                            <div class="file-field" ng-if="block.blockType == 2">
+                                <label class="button">Изображение</label>
+                                <span></span>
+                            </div>
+
+                            <div class="file-field" ng-if="block.blockType == 3">
+                                <input type="file">
+                                <label class="button">Изображение</label>
+                                <span></span>
+                            </div>
+                            <div class="input-field" ng-if="block.blockType == 3"><textarea placeholder="Текст"></textarea>
+                                <label></label>
+                            </div>
+
+                            <div class="input-field" ng-if="block.blockType == 4">
+                                <textarea placeholder="Текст"></textarea>
+                                <label></label>
+                            </div>
+                            <div class="file-field"  ng-if="block.blockType == 4">
+                                <input type="file">
+                                <label class="button">Изображение</label>
+                                <span></span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <button type="submit" class="button">Создать</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<footer></footer>
+
+<div id="select-block-modal" class="modal">
+    <div class="modal-header"><h3>Тип блока</h3></div>
+    <div class="modal-content">
+        <div class="block-types">
+            <div class="custom-radio select" data-block-type="text">
+                <input id="text-radio" type="radio" name="block-type">
+                <label for="text-radio"><i class="fa fa-align-center"></i></label>
+            </div>
+            <div class="custom-radio select" data-block-type="video">
+                <input id="video-radio" type="radio" name="block-type">
+                <label for="video-radio"><i class="fa fa-youtube-play"></i></label>
+            </div>
+            <div class="custom-radio select" data-block-type="picture">
+                <input id="picture-radio" type="radio" name="block-type">
+                <label for="picture-radio"><i class="fa fa-picture-o"></i></label>
+            </div>
+            <div class="custom-radio select" data-block-type="picture-left">
+                <input id="picture-left-radio" type="radio" name="block-type">
+                <label for="picture-left-radio">
+                    <i class="fa fa-align-right"></i>
+                    <i class="fa fa-picture-o"></i>
+                </label>
+            </div>
+            <div class="custom-radio select" data-block-type="picture-right">
+                <input id="picture-right-radio" type="radio" name="block-type">
+                <label for="picture-right-radio">
+                    <i class="fa fa-picture-o"></i>
+                    <i class="fa fa-align-left"></i>
+                </label>
+            </div>
+        </div>
+        <div class="centered">
+            <a href="#" class="button" id="add-block">добавить блок</a>
+        </div>
+    </div>
+</div>
