@@ -5,7 +5,6 @@
         public int Id { get; set; }
         public string Text { get; set; }
         public int Number { get; set; }
-        public byte[] Image { get; set; }
         public string ImageType { get; set; }
 
         public BlockType Type { get; set; }

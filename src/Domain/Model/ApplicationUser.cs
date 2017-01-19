@@ -7,8 +7,7 @@ namespace Domain.Model
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public byte[] Photo { get; set; }
-        public string PhotoType { get; set; }
+        public string PhotoPath { get; set; }
         public bool IsApproved { get; set; } = false;
         public List<Like> Likes { get; set; }
         public List<Unit> Units { get; set; }

@@ -8,7 +8,6 @@ namespace Domain.Model
         public int Id { get; set; }
         public string Name { get; set; }
         public DateTime Date { get; set; } = DateTime.Now;
-        public byte[] Cover { get; set; }
         public string CoverType { get; set; }
         public long Views { get; set; } = 0;
         public bool IsApproved { get; set; } = false;
