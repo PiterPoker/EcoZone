@@ -79,7 +79,7 @@ function authService($http, $cookies, localStorageService) {
         }).then(
             function successCallback(response) {
                 if (response.data != "Неверные данные." && response.data != "При входе произошла ошибка.") {
-                    $cookies.put("access_token", response.data.email);
+                    $cookies.put("access_token", response.data.email,response.data.lastname,response.data.firstname);
                     localStorageService.set("authorizationData", {
                         token: response.access_token,
                         id: response.data.id,
@@ -112,11 +112,36 @@ function authService($http, $cookies, localStorageService) {
         }
     };
 
+    var isInRole = function (role) {
+        var isInRole = false;
+        angular.forEach(authentication.roles, function (authRole) {
+            if (authRole == role) {
+                isInRole = true;
+            }
+        });
+        return isInRole;
+    };
+
+    var getRole = function (role) {
+        switch (role) {
+            case "Admin":
+                return "Администратор";
+            case "User":
+                return "Пользователь";
+            case "Author":
+                return "Автор";
+            case "Moderator":
+                return "Модератор";
+        }
+    };
+
     authServiceFactory.signUp = signUp;
     authServiceFactory.login = login;
     authServiceFactory.logOut = logOut;
     authServiceFactory.fillAuthData = fillAuthData;
     authServiceFactory.authentication = authentication;
+    authServiceFactory.isInRole = isInRole;
+    authServiceFactory.getRole = getRole;
 
     return authServiceFactory;
 }

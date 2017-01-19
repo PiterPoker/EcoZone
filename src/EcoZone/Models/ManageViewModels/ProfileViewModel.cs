@@ -18,7 +18,7 @@ namespace EcoZone.Models.ManageViewModels
             EmailConfirmed = user.EmailConfirmed;
             PhoneNumber = user.PhoneNumber;
             PhoneNumberConfirmed = user.PhoneNumberConfirmed;
-            Photo = user.PhotoType;
+            Photo = user.PhotoPath;
             Roles = roles;
         }
 
